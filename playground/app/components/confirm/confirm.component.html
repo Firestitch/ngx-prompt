@@ -1,0 +1,6 @@
+
+<button mat-raised-button (click)="showConfirm()">Open Confirm</button>
+<button mat-raised-button (click)="showConfirmButtons()">Open Confirm with Custom Buttons</button>
+<p>
+    <ng-container *ngIf="confirmValue">Selected: {{confirmValue}}</ng-container>
+</p>

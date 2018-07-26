@@ -1,0 +1,12 @@
+<b class="dialog-title">{{data.title}}</b>
+<mat-dialog-content tabindex="-1">
+  {{data.template}}
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button
+          (click)="close(button)"
+          [color]="button.color"
+          [ngClass]="button.class"
+          *ngFor="let button of data.buttons">{{button.label}}</button>
+</mat-dialog-actions>
