@@ -19,6 +19,7 @@ import { FsPromptConfig, FsPromptConfirmConfig } from '../classes';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/switchMap';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 
 export enum PromptType {
   confirm = 'confirm',
@@ -133,7 +134,7 @@ export class FsPrompt {
     switch (type) {
       case PromptType.confirm: {
         return this.dialog.open(FsPromptConfirmComponent, config.dialogConfig).afterClosed()
-          .switchMap((value) => (value) ? Observable.of(value) : Observable.throw('error'));
+          .switchMap((value) => (value) ? of(value) : Observable.throw('error'));
       }
 
       case PromptType.input: {
