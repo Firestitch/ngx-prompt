@@ -21,7 +21,7 @@ import {  SelectComponent,
     BrowserAnimationsModule,
     AppMaterialModule,
     FormsModule,
-    FsExampleModule
+    FsExampleModule.forRoot()
   ],
   entryComponents: [
   ],
