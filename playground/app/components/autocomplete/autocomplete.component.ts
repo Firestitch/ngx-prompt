@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { FsPrompt } from '../../../../src';
-import { Subject } from 'rxjs/Subject';
+import { FsPrompt } from '@firestitch/prompt';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'autocomplete-example',
