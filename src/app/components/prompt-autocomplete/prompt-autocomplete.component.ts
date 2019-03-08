@@ -6,7 +6,8 @@ import { MatAutocompleteSelectedEvent } from '@angular/material';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 
-import { FsPrompt, ConverterType } from '../../services/prompt.service';
+import { valuesConverter } from '../../helpers/values-converter';
+import { ConverterType } from '../../helpers/enums';
 
 
 @Component({
@@ -58,7 +59,7 @@ export class FsPromptAutocompleteComponent implements OnInit {
    * Load items depend from values type
    */
   private loadItems() {
-    let result = FsPrompt.valuesConverter(this.data.values);
+    let result = valuesConverter(this.data.values);
 
     switch (result.type) {
       case ConverterType.observable: {
@@ -93,11 +94,6 @@ export class FsPromptAutocompleteComponent implements OnInit {
     }
   }
 
-  /**
-   * Filter items by name
-   * @param {string} name
-   * @returns {any[]}
-   */
   private filterItems(name: string) {
     return this.items.filter(item =>
       item.name.toLowerCase().indexOf(name.toLowerCase()) === 0);

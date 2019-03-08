@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { FsPrompt, ConverterType } from '../../services/prompt.service';
+import { valuesConverter } from '../../helpers/values-converter';
+import { ConverterType } from '../../helpers/enums';
 
 
 @Component({
@@ -30,12 +31,13 @@ export class FsPromptSelectComponent implements OnInit {
   }
 
   private loadItems() {
-    const result = FsPrompt.valuesConverter(this.data.values);
+    const result = valuesConverter(this.data.values);
 
     switch (result.type) {
       case ConverterType.observable: {
         this.loading = true;
-        result.values.subscribe((response) => {
+        result.values
+        .subscribe((response) => {
           this.items = response;
           this.loading = false;
         }, () => {
