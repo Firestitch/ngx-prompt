@@ -31,6 +31,8 @@ export class SelectComponent {
     this.fsPrompt.select({
       label: 'Please select a user',
       hint: 'Hint: His name is Dave',
+      title: 'Select Prompt',
+      required: true,
       values: () => {
         return testObservable;
       }

@@ -30,6 +30,7 @@ export class AutocompleteComponent {
     this.fsPrompt.autocomplete({
       label: 'Please select a user',
       hint: 'Hint: His name is Dave',
+      title: 'Auto Complete Prompt',
       values: () => {
         return testObservable;
       }

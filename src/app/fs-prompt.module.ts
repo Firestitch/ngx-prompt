@@ -48,13 +48,13 @@ import { FsPrompt } from './services/prompt.service';
     FsPromptSelectComponent,
     FsPromptAutocompleteComponent,
   ],
-  providers: [],
+  providers: [FsPrompt ],
 })
 export class FsPromptModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: FsPromptModule,
-      providers: [ FsPrompt ]
+      providers: [  ]
     };
   }
 }

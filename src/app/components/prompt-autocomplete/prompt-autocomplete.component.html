@@ -20,6 +20,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions>
-  <button mat-button (click)="complete()" *ngIf="!error && !loading && data.commitShow">{{data.commitLabel}}</button>
+  <button mat-button (click)="complete()" color="primary" *ngIf="!error && !loading && data.commitShow">{{data.commitLabel}}</button>
   <button mat-button [mat-dialog-close]="false" *ngIf="data.cancelShow">{{data.cancelLabel}}</button>
 </mat-dialog-actions>

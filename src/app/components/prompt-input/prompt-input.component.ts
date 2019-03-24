@@ -15,7 +15,9 @@ export class FsPromptInputComponent {
   ) {
   }
 
-  public complete() {
-    this.dialogRef.close(this.inputValue);
+  public complete(form) {
+    if (form.valid) {
+      this.dialogRef.close(this.inputValue);
+    }
   }
 }

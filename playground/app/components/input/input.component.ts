@@ -16,6 +16,9 @@ export class InputComponent {
     this.fsPrompt.input({
       hint: 'Use commas to separate multiple email addresses',
       label: 'Please an email adresses',
+      title: 'Input Prompt',
+      commitLabel: 'Create',
+      required: true
     }).subscribe((value: string | boolean) => {
       if (value !== false) {
         this.inputValue = value;

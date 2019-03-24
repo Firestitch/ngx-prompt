@@ -13,7 +13,8 @@ export interface IFsPromptConfig {
   cancelShow?: boolean;
   values?: FsValuesFunction;
   dialogConfig?: MatDialogConfig;
-  buttons?: IFsPromptButtonConfig[]
+  buttons?: IFsPromptButtonConfig[],
+  required?: boolean
 }
 
 export interface IFsPromptButtonConfig {

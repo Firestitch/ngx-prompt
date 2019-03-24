@@ -26,7 +26,7 @@ import {
     BrowserAnimationsModule,
     AppMaterialModule,
     FormsModule,
-    FsPromptModule.forRoot(),
+    FsPromptModule,
     FsExampleModule.forRoot(),
     FsMessageModule.forRoot(),
     ToastrModule.forRoot({ preventDuplicates: true }),
