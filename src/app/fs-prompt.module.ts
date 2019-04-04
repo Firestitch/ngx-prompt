@@ -19,6 +19,7 @@ import { FsPromptSelectComponent } from './components/prompt-select/prompt-selec
 import { FsPromptInputComponent } from './components/prompt-input/prompt-input.component';
 
 import { FsPrompt } from './services/prompt.service';
+import { FsFormModule } from '@firestitch/form';
 
 
 @NgModule({
@@ -35,6 +36,8 @@ import { FsPrompt } from './services/prompt.service';
     MatFormFieldModule,
     MatSelectModule,
     MatAutocompleteModule,
+
+    FsFormModule
   ],
   entryComponents: [
     FsPromptConfirmComponent,

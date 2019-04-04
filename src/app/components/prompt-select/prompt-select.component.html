@@ -1,9 +1,9 @@
-<form (ngSubmit)="complete(form)" #form="ngForm">
+<form (fsForm)="complete(form)" #form="ngForm">
   <h2 mat-dialog-title>{{data.title}}</h2>
   <mat-dialog-content tabindex="-1">
     {{data.template}}
     <mat-form-field *ngIf="!loading && !error">
-      <mat-select [placeholder]="data.label" [(ngModel)]="result" name="select" [required]="data.required===true">
+      <mat-select [placeholder]="data.label" [(ngModel)]="result" name="select" [fsFormRequired]="data.required===true">
         <mat-option *ngFor="let item of items" [value]="item.value">
           {{ item.name }}
         </mat-option>
