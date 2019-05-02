@@ -1,5 +1,9 @@
 
-<button mat-raised-button (click)="openAutocomplete()">Open Autocomplete</button>
-<p>
-    <ng-container *ngIf="selectAutoValue !== false">Selected: {{selectAutoValue}}</ng-container>
-</p>
+<button mat-raised-button color="primary" (click)="openAutocomplete()">Open Autocomplete</button>
+
+<div *ngIf="selectAutoValue !== false">
+  <fieldset>
+    <legend>Selected</legend>
+    <ng-container>{{selectAutoValue}}</ng-container>
+  </fieldset>
+</div>

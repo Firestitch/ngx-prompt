@@ -16,7 +16,7 @@ export class ConfirmComponent {
   public showConfirm() {
     this.fsPrompt.confirm({
       title: 'Confirm',
-      template: 'Are you sure?'
+      template: 'Are you sure?<br><br>Are you really sure?'
     }).subscribe(() => {
       this.confirmValue = 'Ok';
     }, (error: any) => {

@@ -1,6 +1,12 @@
 
-<button mat-raised-button (click)="showConfirm()">Open Confirm</button>
-<button mat-raised-button (click)="showConfirmButtons()">Open Confirm with Custom Buttons</button>
-<p>
-    <ng-container *ngIf="confirmValue">Selected: {{confirmValue}}</ng-container>
-</p>
+<div fxLayout="row" fxLayoutGap="5px">
+  <button mat-raised-button color="primary" (click)="showConfirm()">Open Confirm</button>
+  <button mat-raised-button color="primary" (click)="showConfirmButtons()">Open Confirm with Custom Buttons</button>
+</div>
+
+<div *ngIf="confirmValue">
+  <fieldset>
+    <legend>Selected</legend>
+    <ng-container>{{confirmValue}}</ng-container>
+  </fieldset>
+</div>

@@ -1,5 +1,8 @@
+<button mat-raised-button color="primary" (click)="openInput()">Open Input</button>
 
-<button mat-raised-button (click)="openInput()">Open Input</button>
-<p>
-    <ng-container *ngIf="inputValue !== false">Typed value: {{inputValue}}</ng-container>
-</p>
+<div *ngIf="inputValue !== false">
+  <fieldset>
+    <legend>Selected</legend>
+    <ng-container>{{inputValue}}</ng-container>
+  </fieldset>
+</div>

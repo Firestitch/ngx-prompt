@@ -1,5 +1,8 @@
-<button mat-raised-button (click)="openSelect()">Open Select</button>
-<p>
-    <ng-container *ngIf="selectValue !== false">Selected: {{selectValue}}</ng-container>
-</p>
+<button mat-raised-button color="primary" (click)="openSelect()">Open Select</button>
 
+<div *ngIf="selectValue !== false">
+  <fieldset>
+    <legend>Selected</legend>
+    <ng-container>{{selectValue}}</ng-container>
+  </fieldset>
+</div>
