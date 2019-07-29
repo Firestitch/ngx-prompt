@@ -15,6 +15,7 @@ export class FsPromptConfig<T> {
   public cancelLabel = 'Cancel';
   public commitShow = true;
   public cancelShow = true;
+  public default;
   public buttons = [];
 
   public values: Observable<T> | Promise<T> | T[] | FsValuesFunction = [];

@@ -14,7 +14,8 @@ export interface IFsPromptConfig {
   values?: FsValuesFunction;
   dialogConfig?: MatDialogConfig;
   buttons?: IFsPromptButtonConfig[],
-  required?: boolean
+  required?: boolean,
+  default?: string
 }
 
 export interface IFsPromptButtonConfig {

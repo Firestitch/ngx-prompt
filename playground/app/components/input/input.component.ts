@@ -18,7 +18,8 @@ export class InputComponent {
       label: 'Please an email adresses',
       title: 'Input Prompt',
       commitLabel: 'Create',
-      required: true
+      required: true,
+      default: 'Default Value'
     }).subscribe((value: string | boolean) => {
       if (value !== false) {
         this.inputValue = value;

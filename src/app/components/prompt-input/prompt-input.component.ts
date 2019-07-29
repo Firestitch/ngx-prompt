@@ -13,6 +13,7 @@ export class FsPromptInputComponent {
     public dialogRef: MatDialogRef<FsPromptInputComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
+    this.inputValue = data.default;
   }
 
   public complete(form) {
