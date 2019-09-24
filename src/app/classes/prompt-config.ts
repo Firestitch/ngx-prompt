@@ -43,6 +43,10 @@ export class FsPromptConfig<T> {
     return config
   }
 
+  set dialogConfig(value) {
+    this._dialogConfig = value;
+  }
+
   public addDefaultPanelClasses(type: string) {
     // FIXME replace this with FsUtil or something else
     if (typeof this._dialogConfig.panelClass === 'string' || this._dialogConfig.panelClass instanceof String) {
