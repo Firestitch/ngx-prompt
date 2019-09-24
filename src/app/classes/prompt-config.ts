@@ -24,7 +24,8 @@ export class FsPromptConfig<T> {
 
   protected _defaultDialogConfig = {
     width: '500px',
-    height: 'auto'
+    height: 'auto',
+    autoFocus: true
   };
 
   constructor(

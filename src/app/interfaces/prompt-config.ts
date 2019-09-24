@@ -1,5 +1,6 @@
 import { MatDialogConfig } from '@angular/material/dialog';
 import { FsValuesFunction } from './values-function';
+import { Observable } from 'rxjs';
 
 export interface IFsPromptConfig {
   title?: string;
@@ -11,7 +12,7 @@ export interface IFsPromptConfig {
   cancelLabel?: string;
   commitShow?: boolean;
   cancelShow?: boolean;
-  values?: FsValuesFunction;
+  values? (keyword): Observable<{name, value}[]>;
   dialogConfig?: MatDialogConfig;
   buttons?: IFsPromptButtonConfig[],
   required?: boolean,

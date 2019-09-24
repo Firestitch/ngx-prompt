@@ -9,7 +9,6 @@ import {
   MatInputModule,
   MatSelectModule,
   MatFormFieldModule,
-  MatAutocompleteModule,
 } from '@angular/material';
 
 // Dialog
@@ -20,6 +19,7 @@ import { FsPromptInputComponent } from './components/prompt-input/prompt-input.c
 
 import { FsPrompt } from './services/prompt.service';
 import { FsFormModule } from '@firestitch/form';
+import { FsAutocompleteModule } from '@firestitch/autocomplete';
 
 
 @NgModule({
@@ -35,9 +35,9 @@ import { FsFormModule } from '@firestitch/form';
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-    MatAutocompleteModule,
 
-    FsFormModule
+    FsFormModule,
+    FsAutocompleteModule
   ],
   entryComponents: [
     FsPromptConfirmComponent,
@@ -51,13 +51,14 @@ import { FsFormModule } from '@firestitch/form';
     FsPromptSelectComponent,
     FsPromptAutocompleteComponent,
   ],
-  providers: [FsPrompt ],
+  providers: [
+    FsPrompt
+  ],
 })
 export class FsPromptModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: FsPromptModule,
-      providers: [  ]
+      ngModule: FsPromptModule
     };
   }
 }

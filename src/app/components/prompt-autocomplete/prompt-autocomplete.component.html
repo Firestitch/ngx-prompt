@@ -2,21 +2,19 @@
 <mat-dialog-content tabindex="-1">
   {{data.template}}
 
-  <mat-form-field *ngIf="!loading && !error">
-    <input aria-label="State" matInput
-           [placeholder]="data.label"
-           [matAutocomplete]="auto"
-           [value]="inputControl"
-           [formControl]="inputControl">
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayWith" (optionSelected)="setSelectedValue($event)">
-      <mat-option *ngFor="let item of filteredItems | async" [value]="item">
-        <small>{{item.name}}</small>
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+  <fs-autocomplete
+    [fetch]="fetch"
+    [fetchOnFocus]="false"
+    [displayWith]="displayWith"
+    [(ngModel)]="result"
+    [placeholder]="data.label"
+    [required]="true"
+    name="result">
+    <ng-template fsAutocompleteTemplate let-data="data">
+      {{ data.name }}
+    </ng-template>
+  </fs-autocomplete>
 
-  <ng-container *ngIf="loading">Please wait...</ng-container>
-  <ng-container *ngIf="error">Something went wrong. Please, try again</ng-container>
 </mat-dialog-content>
 
 <mat-dialog-actions>
