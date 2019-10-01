@@ -18,8 +18,8 @@ export class SelectComponent {
 
     // Array test case
     const simpleArray = [
-      { name: 'Dave', value: 'dave'},
-      { name: 'Mike', value: 'mike' }
+      { name: 'Dave', value: { id: 1, name: 'Dave' } },
+      { name: 'Mike', value: { id: 2, name: 'Mike' } }
     ];
 
     // Observable test case

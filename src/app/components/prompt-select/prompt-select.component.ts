@@ -26,10 +26,8 @@ export class FsPromptSelectComponent implements OnInit {
     this.loadItems();
   }
 
-  public complete(form) {
-    if (form.valid) {
-      this.dialogRef.close(this.result);
-    }
+  public modelChange(e) {
+    this.dialogRef.close(this.result);
   }
 
   private loadItems() {

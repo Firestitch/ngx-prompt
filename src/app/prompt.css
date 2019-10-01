@@ -6,3 +6,7 @@
   margin: 0 0 20px;
   display: block;
 }
+
+.mat-dialog-content {
+  outline: none;
+}

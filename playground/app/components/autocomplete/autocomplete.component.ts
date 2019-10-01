@@ -4,6 +4,7 @@ import { of } from 'rxjs';
 
 @Component({
   selector: 'autocomplete-example',
+  styleUrls: ['autocomplete.component.scss'],
   templateUrl: 'autocomplete.component.html'
 })
 export class AutocompleteComponent {
@@ -19,9 +20,9 @@ export class AutocompleteComponent {
       title: 'Auto Complete Prompt',
       values: (keyword) => {
         return of([
-          { name: 'Bob', value: '1' },
-          { name: 'Ryan', value: '2' },
-          { name: 'Jim', value: '3' }
+          { name: 'Bob', value:  { id: 1, name: 'Bob' } },
+          { name: 'Ryan', value: { id: 2, name: 'Ryan' } },
+          { name: 'Jim', value: { id: 3, name: 'Jim' } }
       ].filter(item => {
         return item.name.toLowerCase().indexOf(keyword.toLowerCase()) >= 0 || !keyword
       }));

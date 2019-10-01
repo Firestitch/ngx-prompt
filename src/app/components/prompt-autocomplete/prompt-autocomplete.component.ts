@@ -28,12 +28,10 @@ export class FsPromptAutocompleteComponent {
     return this.data.values(name);
   };
 
-  public complete() {
-    this.dialogRef.close(this.result);
-  }
-
   public modelChange(result) {
-    this.result = result ? result.value : null;
+    if (result) {
+      this.dialogRef.close(result.value);
+    }
   }
 
   public displayWith(value) {
