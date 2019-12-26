@@ -1,4 +1,4 @@
-import { MatDialogConfig } from '@angular/material';
+import { MatDialogConfig } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 
 import { FsValuesFunction } from '../interfaces';

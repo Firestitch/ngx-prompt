@@ -1,5 +1,11 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Inject,
+  OnInit
+} from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 import { valuesConverter } from '../../helpers/values-converter';
 import { ConverterType } from '../../helpers/enums';
@@ -8,6 +14,7 @@ import { ConverterType } from '../../helpers/enums';
 @Component({
   templateUrl: 'prompt-select.component.html',
   styleUrls: [ '../../prompt.css' ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FsPromptSelectComponent implements OnInit {
 
@@ -18,7 +25,8 @@ export class FsPromptSelectComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<FsPromptSelectComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private _cdRef: ChangeDetectorRef,
   ) {
   }
 
@@ -40,9 +48,11 @@ export class FsPromptSelectComponent implements OnInit {
         .subscribe((response) => {
           this.items = response;
           this.loading = false;
+          this._cdRef.markForCheck();
         }, () => {
           this.error = true;
           this.loading = false;
+          this._cdRef.markForCheck();
         })
       } break;
 
@@ -51,18 +61,22 @@ export class FsPromptSelectComponent implements OnInit {
         result.values.then((response) => {
           this.items = response;
           this.loading = false;
+          this._cdRef.markForCheck();
         }, () => {
           this.error = true;
           this.loading = false;
+          this._cdRef.markForCheck();
         })
       } break;
 
       case ConverterType.array: {
         this.items = this.data.values;
+        this._cdRef.markForCheck();
       } break;
 
       default: {
         this.error = true;
+        this._cdRef.markForCheck();
       }
     }
   }

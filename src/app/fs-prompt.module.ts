@@ -3,13 +3,11 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // Material
-import {
-  MatButtonModule,
-  MatDialogModule,
-  MatInputModule,
-  MatSelectModule,
-  MatFormFieldModule,
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 // Dialog
 import { FsPromptConfirmComponent } from './components/prompt-confirm/prompt-confirm.component';
