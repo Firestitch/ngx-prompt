@@ -1,24 +1,43 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: 'prompt-input.component.html',
   styleUrls: [ '../../prompt.css' ],
+  styles: [
+    `
+      .form-error {
+        color: #000;
+      }
+    `
+  ]
 })
-export class FsPromptInputComponent {
+export class FsPromptInputComponent implements OnInit {
 
-  public inputValue = '';
+  public input = new FormControl('');
+
 
   constructor(
-    public dialogRef: MatDialogRef<FsPromptInputComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {
-    this.inputValue = data.default;
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private _dialogRef: MatDialogRef<FsPromptInputComponent>,
+  ) {}
+
+  public ngOnInit(): void {
+    this._init();
   }
 
-  public complete(form) {
-    if (form.valid) {
-      this.dialogRef.close(this.inputValue);
+  public complete() {
+    if (this.input.valid) {
+      this._dialogRef.close(this.input.value);
+    }
+  }
+
+  private _init() {
+    this.input.setValue(this.data.default);
+
+    if (this.data.required) {
+      this.input.setValidators(Validators.required);
     }
   }
 }

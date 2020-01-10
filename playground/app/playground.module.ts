@@ -3,7 +3,12 @@ import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { FsPromptModule } from '@firestitch/prompt';
+import {
+  FsPromptInputModule,
+  FsPromptSelectModule,
+  FsPromptAutocompleteModule,
+  FsPromptConfirmModule,
+} from '@firestitch/prompt';
 import { FsExampleModule } from '@firestitch/example';
 import { FsMessageModule } from '@firestitch/message';
 
@@ -26,7 +31,10 @@ import {
     BrowserAnimationsModule,
     AppMaterialModule,
     FormsModule,
-    FsPromptModule,
+    FsPromptInputModule,
+    FsPromptSelectModule,
+    FsPromptAutocompleteModule,
+    FsPromptConfirmModule,
     FsExampleModule.forRoot(),
     FsMessageModule.forRoot(),
     ToastrModule.forRoot({ preventDuplicates: true }),

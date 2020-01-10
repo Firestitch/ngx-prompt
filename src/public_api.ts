@@ -4,6 +4,10 @@
 
 // Modules
 export { FsPromptModule } from './app/fs-prompt.module';
+export { FsPromptConfirmModule } from './app/components/prompt-confirm/fs-prompt-confirm.module';
+export { FsPromptAutocompleteModule } from './app/components/prompt-autocomplete/fs-prompt-autocomplete.module';
+export { FsPromptSelectModule } from './app/components/prompt-select/fs-prompt-select.module';
+export { FsPromptInputModule } from './app/components/prompt-input/fs-prompt-input.module';
 
 // Classes
 export { FsPromptConfig } from './app/classes/prompt-config';

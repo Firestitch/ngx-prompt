@@ -24,7 +24,9 @@ import { PromptType } from '../helpers/enums';
 
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class FsPrompt {
 
   constructor(private dialog: MatDialog) {}

@@ -19,7 +19,7 @@ export class InputComponent {
       title: 'Input Prompt',
       commitLabel: 'Create',
       required: true,
-      default: 'Default Value'
+      default: 'Default Value',
     }).subscribe((value: string | boolean) => {
       if (value !== false) {
         this.inputValue = value;
