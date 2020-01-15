@@ -8,7 +8,7 @@ import { FormControl, Validators } from '@angular/forms';
   styles: [
     `
       .form-error {
-        color: #000;
+        color: #f44336;
       }
     `
   ]
