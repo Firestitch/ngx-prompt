@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -31,4 +31,11 @@ import { FsPromptSelectComponent } from './prompt-select.component';
     FsPromptSelectComponent,
   ],
 })
-export class FsPromptSelectModule {}
+export class FsPromptSelectModule {
+  static forRoot(): ModuleWithProviders {
+    return {
+      ngModule: FsPromptSelectModule,
+      providers: []
+    }
+  }
+}
