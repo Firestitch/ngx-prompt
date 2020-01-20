@@ -6,6 +6,8 @@ import { FormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
+import { FsDialogModule } from '@firestitch/dialog';
+
 // Dialog
 import { FsPromptConfirmComponent } from './prompt-confirm.component';
 
@@ -18,6 +20,8 @@ import { FsPromptConfirmComponent } from './prompt-confirm.component';
     // Material
     MatDialogModule,
     MatButtonModule,
+
+    FsDialogModule
   ],
   entryComponents: [
     FsPromptConfirmComponent,

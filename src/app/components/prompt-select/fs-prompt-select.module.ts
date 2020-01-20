@@ -8,6 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 
+import { FsDialogModule } from '@firestitch/dialog';
+
 // Dialog
 import { FsPromptSelectComponent } from './prompt-select.component';
 
@@ -23,6 +25,8 @@ import { FsPromptSelectComponent } from './prompt-select.component';
     MatButtonModule,
     MatFormFieldModule,
     MatSelectModule,
+
+    FsDialogModule
   ],
   entryComponents: [
     FsPromptSelectComponent,

@@ -7,6 +7,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 
+import { FsDialogModule } from '@firestitch/dialog';
+
 // Dialog
 import { FsPromptInputComponent } from './prompt-input.component';
 
@@ -21,6 +23,8 @@ import { FsPromptInputComponent } from './prompt-input.component';
     MatDialogModule,
     MatButtonModule,
     MatInputModule,
+
+    FsDialogModule
   ],
   entryComponents: [
     FsPromptInputComponent,

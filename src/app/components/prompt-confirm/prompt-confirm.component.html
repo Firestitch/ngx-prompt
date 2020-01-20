@@ -1,12 +1,14 @@
-<h2 mat-dialog-title> {{data.title}} </h2>
-<mat-dialog-content>
-  <span [innerHtml]="template"></span>
-</mat-dialog-content>
+<fs-dialog mobileMode="float">
+  <h2 mat-dialog-title>{{data.title}}</h2>
+  <mat-dialog-content>
+    <span [innerHtml]="template"></span>
+  </mat-dialog-content>
 
-<mat-dialog-actions>
-  <button mat-button
-          (click)="close(button)"
-          [color]="button.color"
-          [ngClass]="button.class"
-          *ngFor="let button of data.buttons">{{button.label}}</button>
-</mat-dialog-actions>
+  <mat-dialog-actions>
+    <button mat-button
+            (click)="close(button)"
+            [color]="button.color"
+            [ngClass]="button.class"
+            *ngFor="let button of data.buttons">{{button.label}}</button>
+  </mat-dialog-actions>
+</fs-dialog>

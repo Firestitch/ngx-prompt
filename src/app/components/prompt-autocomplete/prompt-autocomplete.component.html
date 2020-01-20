@@ -1,23 +1,23 @@
-<h2 mat-dialog-title>{{data.title}}</h2>
-<mat-dialog-content tabindex="-1">
-  {{data.template}}
+<fs-dialog mobileMode="float">
+  <h2 mat-dialog-title>{{data.title}}</h2>
+  <mat-dialog-content tabindex="-1">
+    {{data.template}}
+    <fs-autocomplete
+      [fetch]="fetch"
+      [fetchOnFocus]="false"
+      [displayWith]="displayWith"
+      [(ngModel)]="result"
+      [placeholder]="data.label"
+      (ngModelChange)="modelChange($event)"
+      [required]="true"
+      name="result">
+      <ng-template fsAutocompleteTemplate let-data="data">
+        {{ data.name }}
+      </ng-template>
+    </fs-autocomplete>
+  </mat-dialog-content>
 
-  <fs-autocomplete
-    [fetch]="fetch"
-    [fetchOnFocus]="false"
-    [displayWith]="displayWith"
-    [(ngModel)]="result"
-    [placeholder]="data.label"
-    (ngModelChange)="modelChange($event)"
-    [required]="true"
-    name="result">
-    <ng-template fsAutocompleteTemplate let-data="data">
-      {{ data.name }}
-    </ng-template>
-  </fs-autocomplete>
-
-</mat-dialog-content>
-
-<mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="false" *ngIf="data.cancelShow">{{data.cancelLabel}}</button>
-</mat-dialog-actions>
+  <mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="false" *ngIf="data.cancelShow">{{data.cancelLabel}}</button>
+  </mat-dialog-actions>
+</fs-dialog>
