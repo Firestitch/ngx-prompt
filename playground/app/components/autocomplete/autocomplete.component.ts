@@ -29,6 +29,8 @@ export class AutocompleteComponent {
       }
     }).subscribe((result: any) => {
       this.selectAutoValue = result;
-    })
+    }, () => {
+      console.log('Cancelled');
+    });
   }
 }

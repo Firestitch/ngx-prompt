@@ -26,6 +26,6 @@
             color="primary">
       {{data.commitLabel}}
     </button>
-    <button mat-button [mat-dialog-close]="false" *ngIf="data.cancelShow">{{data.cancelLabel}}</button>
+    <button mat-button [mat-dialog-close]="undefined" *ngIf="data.cancelShow">{{data.cancelLabel}}</button>
   </mat-dialog-actions>
 </fs-dialog>

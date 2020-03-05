@@ -17,7 +17,6 @@ export class FsPromptInputComponent implements OnInit {
 
   public input = new FormControl('');
 
-
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _dialogRef: MatDialogRef<FsPromptInputComponent>,

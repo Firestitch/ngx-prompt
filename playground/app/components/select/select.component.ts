@@ -38,6 +38,8 @@ export class SelectComponent {
       }
     }).subscribe((result: any) => {
       this.selectValue = result;
-    })
+    }, () => {
+      console.log('Cancelled');
+    });
   }
 }

@@ -19,8 +19,7 @@ export class FsPromptConfirmComponent {
   }
 
   close(button) {
-    const value = button.cancel ? false : button.value || true;
+    const value = button.cancel ? undefined : button.value || true;
     this.dialogRef.close(value);
-
   }
 }

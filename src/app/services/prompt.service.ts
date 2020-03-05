@@ -80,23 +80,39 @@ export class FsPrompt {
           .open(FsPromptConfirmComponent, config.dialogConfig)
           .afterClosed()
           .pipe(
-            switchMap((value) => (value) ? of(value) : throwError('error'))
+            switchMap((value) => value === undefined ? throwError('error') : of(value))
           );
       }
 
       case PromptType.input: {
-        return this.dialog.open(FsPromptInputComponent, config.dialogConfig).afterClosed();
+        return this.dialog.open(FsPromptInputComponent, config.dialogConfig)
+        .afterClosed()
+        .pipe(
+          switchMap((value) => value === undefined ? throwError('error') : of(value))
+        );
       }
 
       case PromptType.select: {
-        return this.dialog.open(FsPromptSelectComponent, config.dialogConfig).afterClosed();
+        return this.dialog.open(FsPromptSelectComponent, config.dialogConfig)
+        .afterClosed()
+        .pipe(
+          switchMap((value) => value === undefined ? throwError('error') : of(value))
+        )
       }
 
       case PromptType.autocomplete: {
-        return this.dialog.open(FsPromptAutocompleteComponent, config.dialogConfig).afterClosed();
+        return this.dialog.open(FsPromptAutocompleteComponent, config.dialogConfig)
+        .afterClosed()
+        .pipe(
+          switchMap((value) => value === undefined ? throwError('error') : of(value))
+        )
       }
 
       default: return throwError('Erorr')
     }
+  }
+
+  private _pipeValue(value) {
+
   }
 }

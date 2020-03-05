@@ -24,6 +24,8 @@ export class InputComponent {
       if (value !== false) {
         this.inputValue = value;
       }
-    })
+    }, () => {
+      console.log('Cancelled');
+    });
   }
 }
