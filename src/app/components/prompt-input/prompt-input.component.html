@@ -5,7 +5,7 @@
     <mat-form-field>
       <input matInput [placeholder]="data.label" [formControl]="input" name="input">
       <mat-hint>
-        <ng-container *ngIf="input.valid; else invalidMessage">
+        <ng-container *ngIf="input.valid || !input.dirty; else invalidMessage">
           {{data.hint}}
         </ng-container>
 
