@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -34,11 +34,4 @@ import { FsPromptAutocompleteComponent } from './prompt-autocomplete.component';
     FsPromptAutocompleteComponent,
   ],
 })
-export class FsPromptAutocompleteModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: FsPromptAutocompleteModule,
-      providers: []
-    }
-  }
-}
+export class FsPromptAutocompleteModule {}

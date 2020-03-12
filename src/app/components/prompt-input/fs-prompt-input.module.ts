@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -33,11 +33,4 @@ import { FsPromptInputComponent } from './prompt-input.component';
     FsPromptInputComponent,
   ],
 })
-export class FsPromptInputModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: FsPromptInputModule,
-      providers: []
-    }
-  }
-}
+export class FsPromptInputModule {}
