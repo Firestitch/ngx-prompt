@@ -7,6 +7,7 @@
   <mat-dialog-actions>
     <button mat-button
             (click)="close(button)"
+            type="button"
             [color]="button.color"
             [ngClass]="button.class"
             *ngFor="let button of data.buttons">{{button.label}}</button>
