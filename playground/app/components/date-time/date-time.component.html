@@ -1,0 +1,8 @@
+<button mat-raised-button color="primary" (click)="openInput()">Open Date Time</button>
+
+<div *ngIf="inputValue !== false">
+  <fieldset>
+    <legend>Selected</legend>
+    <ng-container>{{inputValue}}</ng-container>
+  </fieldset>
+</div>

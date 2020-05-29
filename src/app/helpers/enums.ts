@@ -2,7 +2,9 @@ export enum PromptType {
   confirm = 'confirm',
   input = 'input',
   select = 'select',
-  autocomplete = 'autocomplete'
+  autocomplete = 'autocomplete',
+  date = 'date',
+  dateTime = 'datetime'
 }
 
 export enum ConverterType {

@@ -1,5 +1,4 @@
 import { MatDialogConfig } from '@angular/material/dialog';
-import { FsValuesFunction } from './values-function';
 import { Observable } from 'rxjs';
 
 export interface IFsPromptConfig {
@@ -16,7 +15,8 @@ export interface IFsPromptConfig {
   dialogConfig?: MatDialogConfig;
   buttons?: IFsPromptButtonConfig[],
   required?: boolean,
-  default?: string
+  autofocus?: boolean,
+  default?: any
 }
 
 export interface IFsPromptButtonConfig {

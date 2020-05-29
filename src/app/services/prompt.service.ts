@@ -1,3 +1,4 @@
+import { FsPromptDateComponent } from './../components/prompt-date/prompt-date.component';
 import {
   Injectable,
 } from '@angular/core';
@@ -35,46 +36,66 @@ export class FsPrompt {
    * Open confirmation window and return close observable
    */
   public confirm(config: IFsPromptConfig = {}) {
-    const openConfig = new FsPromptConfirmConfig(config);
+    const openConfig = new FsPromptConfirmConfig(config, PromptType.confirm);
 
-    return this.open(openConfig, PromptType.confirm);
+    return this.open(openConfig);
   }
 
   /**
    * Open window with input field for filling
    */
   public input(config: IFsPromptConfig = {}) {
-    const openConfig = new FsPromptConfig(config);
+    const openConfig = new FsPromptConfig(config, PromptType.input);
 
-    return this.open(openConfig, PromptType.input);
+    return this.open(openConfig);
   }
 
   /**
    * Open modal with list
    */
   public select(config: IFsPromptConfig = {}) {
-    const openConfig = new FsPromptConfig(config);
+    const openConfig = new FsPromptConfig(config, PromptType.select);
 
-    return this.open(openConfig, PromptType.select);
+    return this.open(openConfig);
   }
 
   /**
    * Open modal with autocomplete
    */
   public autocomplete(config: IFsPromptConfig = {}) {
-    const openConfig = new FsPromptConfig(config);
+    const openConfig = new FsPromptConfig(config, PromptType.autocomplete);
 
-    return this.open(openConfig, PromptType.autocomplete);
+    return this.open(openConfig);
+  }
+
+  /**
+   * Open modal with list
+   */
+  public dateTime(config: IFsPromptConfig = {}) {
+    config.autofocus = false;
+    const openConfig = new FsPromptConfig(config, PromptType.dateTime);
+
+    return this.open(openConfig);
+  }
+
+  /**
+   * Open modal with list
+   */
+  public date(config: IFsPromptConfig = {}) {
+    config.autofocus = false;
+    const openConfig = new FsPromptConfig(config, PromptType.date);
+
+    return this.open(openConfig);
   }
 
   /**
    * Open modal dialog depends from type
    */
-  private open(config: FsPromptConfig<any> | FsPromptConfirmConfig<any>, type: PromptType) {
+  private open(config: FsPromptConfig<any> | FsPromptConfirmConfig<any>) {
     // Default classes for modal
-    config.addDefaultPanelClasses(type);
+    config.addDefaultPanelClasses(config.type);
 
-    switch (type) {
+    switch (config.type) {
       case PromptType.confirm: {
         return this.dialog
           .open(FsPromptConfirmComponent, config.dialogConfig)
@@ -108,11 +129,18 @@ export class FsPrompt {
         )
       }
 
+      case PromptType.date:
+      case PromptType.dateTime: {
+
+        return this.dialog.open(FsPromptDateComponent, config.dialogConfig)
+        .afterClosed()
+        .pipe(
+          switchMap((value) => value === undefined ? throwError('error') : of(value))
+        )
+      }
+
       default: return throwError('Erorr')
     }
   }
 
-  private _pipeValue(value) {
-
-  }
 }

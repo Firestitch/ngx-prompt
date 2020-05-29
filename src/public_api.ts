@@ -8,6 +8,7 @@ export { FsPromptConfirmModule } from './app/components/prompt-confirm/fs-prompt
 export { FsPromptAutocompleteModule } from './app/components/prompt-autocomplete/fs-prompt-autocomplete.module';
 export { FsPromptSelectModule } from './app/components/prompt-select/fs-prompt-select.module';
 export { FsPromptInputModule } from './app/components/prompt-input/fs-prompt-input.module';
+export { FsPromptDateModule } from './app/components/prompt-date/fs-prompt-date.module';
 
 // Classes
 export { FsPromptConfig } from './app/classes/prompt-config';

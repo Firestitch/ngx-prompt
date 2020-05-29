@@ -1,7 +1,7 @@
 {
   "name": "@firestitch/prompt",
   "title": "Prompt",
-  "version": "8.4.2",
+  "version": "8.4.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/Firestitch/ngx-prompt"
@@ -45,7 +45,11 @@
     "@compodoc/compodoc": "^1.1.11",
     "@firestitch/autocomplete": "^8.2.3",
     "@firestitch/common": "^7.0.5",
+    "@firestitch/clear": "^8.1.0",
     "@firestitch/drawer": "^8.0.2",
+    "@firestitch/date": "^8.0.7",
+    "@firestitch/datepicker": "^8.2.3",
+    "@firestitch/scroll-picker": "^8.0.0",
     "@firestitch/dialog": "^8.1.1",
     "@firestitch/example": "^8.0.0",
     "@firestitch/iframe": "^8.0.0",
@@ -74,6 +78,7 @@
   "peerDependencies": {
     "zone.js": ">=0.10.0",
     "@firestitch/form": ">=8.0.0",
-    "@firestitch/dialog": ">=8.1.1"
+    "@firestitch/dialog": ">=8.1.1",
+    "@firestitch/datepicker": ">=8.2.3"
   }
 }

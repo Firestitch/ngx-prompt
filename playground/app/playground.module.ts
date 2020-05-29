@@ -8,9 +8,11 @@ import {
   FsPromptSelectModule,
   FsPromptAutocompleteModule,
   FsPromptConfirmModule,
+  FsPromptDateModule,
 } from '@firestitch/prompt';
 import { FsExampleModule } from '@firestitch/example';
 import { FsMessageModule } from '@firestitch/message';
+import { FsDatePickerModule } from '@firestitch/datepicker';
 
 import { ToastrModule } from 'ngx-toastr';
 
@@ -20,7 +22,9 @@ import {
   AutocompleteComponent,
   ConfirmComponent,
   InputComponent,
-  SelectComponent
+  SelectComponent,
+  DateComponent,
+  DateTimeComponent,
 } from './components';
 
 
@@ -33,8 +37,10 @@ import {
     FormsModule,
     FsPromptInputModule,
     FsPromptSelectModule,
+    FsPromptDateModule,
     FsPromptAutocompleteModule,
     FsPromptConfirmModule,
+    FsDatePickerModule.forRoot(),
     FsExampleModule.forRoot(),
     FsMessageModule.forRoot(),
     ToastrModule.forRoot({ preventDuplicates: true }),
@@ -45,9 +51,10 @@ import {
     SelectComponent,
     AutocompleteComponent,
     InputComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    DateComponent,
+    DateTimeComponent,
   ],
-  providers: [],
 })
 export class PlaygroundModule {
 }

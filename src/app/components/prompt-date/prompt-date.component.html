@@ -1,0 +1,32 @@
+<fs-dialog mobileMode="float">
+  <h2 mat-dialog-title *ngIf="data.title">{{data.title}}</h2>
+  <mat-dialog-content tabindex="-1">
+    {{data.template}}
+    <mat-form-field>
+      <input matInput fsDatePicker [placeholder]="data.label" [formControl]="input" name="input" [view]="promptType">
+
+      <mat-hint>
+        <ng-container *ngIf="input.valid || !input.dirty; else invalidMessage">
+          {{data.hint}}
+        </ng-container>
+
+        <ng-template #invalidMessage>
+          <div class="form-error">
+            This field is required
+          </div>
+        </ng-template>
+      </mat-hint>
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions>
+    <button mat-button
+            *ngIf="data.commitShow"
+            (click)="complete()"
+            [disabled]="input.invalid"
+            color="primary">
+      {{data.commitLabel}}
+    </button>
+    <button mat-button [mat-dialog-close]="undefined" type="button" *ngIf="data.cancelShow">{{data.cancelLabel}}</button>
+  </mat-dialog-actions>
+</fs-dialog>

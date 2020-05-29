@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 
 import { FsValuesFunction } from '../interfaces';
 import { IFsPromptConfig } from '../interfaces';
+import { PromptType } from '../helpers/enums';
 
 
 export class FsPromptConfig<T> {
@@ -16,6 +17,8 @@ export class FsPromptConfig<T> {
   public commitShow = true;
   public cancelShow = true;
   public default;
+  public autofocus = true;
+  public type: PromptType;
   public buttons = [];
 
   public values: Observable<T> | Promise<T> | T[] | FsValuesFunction = [];
@@ -24,15 +27,16 @@ export class FsPromptConfig<T> {
 
   protected _defaultDialogConfig = {
     width: '500px',
-    height: 'auto',
-    autoFocus: true
+    height: 'auto'
   };
 
   constructor(
     public config: IFsPromptConfig,
+    public promptType: PromptType,
   ) {
-    this.applyDialogConfig(config);
+    this.type = promptType;
     this.applyConfig(config);
+    this.applyDialogConfig(config);
   }
 
   get dialogConfig() {
@@ -68,7 +72,7 @@ export class FsPromptConfig<T> {
     const inputDialogConfig = config.dialogConfig;
 
     // Previously let's assign default config
-    this._dialogConfig = Object.assign({}, this._defaultDialogConfig);
+    this._dialogConfig = { ...this._defaultDialogConfig, autoFocus: this.autofocus };
 
     // Then assign passed config
     if (inputDialogConfig) {
