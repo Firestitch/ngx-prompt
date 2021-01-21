@@ -16,17 +16,20 @@ export class FsPromptConfirmConfig<T> extends FsPromptConfig<T> {
     }
 
     if (!this.buttons.length) {
-      this.buttons = [
-        {
+      if (this.commitShow) {
+        this.buttons.push({
           label: this.commitLabel,
           color: 'primary'
-        },
-        {
+        });
+      }
+
+      if (this.cancelShow) {
+        this.buttons.push({
           label: this.cancelLabel,
           cancel: true,
           color: ''
-        }
-      ];
+        });
+      }
     }
   }
 
