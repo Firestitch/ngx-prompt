@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { FormControl, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   templateUrl: 'prompt-input.component.html',
@@ -15,28 +15,34 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class FsPromptInputComponent implements OnInit {
 
-  public input = new FormControl('');
+  public promptInputForm = new FormGroup({
+    input: new FormControl(''),
+  });
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
     private _dialogRef: MatDialogRef<FsPromptInputComponent>,
   ) {}
 
+  public get inputControl(): AbstractControl {
+    return this.promptInputForm.get('input');
+  }
+
   public ngOnInit(): void {
     this._init();
   }
 
   public complete() {
-    if (this.input.valid) {
-      this._dialogRef.close(this.input.value);
+    if (this.inputControl.valid) {
+      this._dialogRef.close(this.inputControl.value);
     }
   }
 
   private _init() {
-    this.input.setValue(this.data.default);
+    this.inputControl.setValue(this.data.default);
 
     if (this.data.required) {
-      this.input.setValidators(Validators.required);
+      this.inputControl.setValidators(Validators.required);
     }
   }
 }
