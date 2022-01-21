@@ -1,0 +1,10 @@
+
+<button mat-raised-button color="primary" (click)="openAutocomplete()">Open Autocomplete Chips</button>
+<button mat-raised-button color="primary" (click)="openAutocompleteEmail()">Open Autocomplete Chips Email</button>
+
+<div *ngIf="selected">
+  <fieldset>
+    <legend>Selected</legend>
+    <ng-container>{{selected|json}}</ng-container>
+  </fieldset>
+</div>

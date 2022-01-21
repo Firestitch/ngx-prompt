@@ -1,0 +1,32 @@
+<fs-dialog mobileMode="float">
+  <h2 mat-dialog-title>{{data.title}}</h2>
+  <mat-dialog-content tabindex="-1">
+    {{data.template}}
+    <fs-autocomplete-chips
+        #autocomplete
+        [fetch]="fetch"
+        [placeholder]="config.label"
+        [fetchOnFocus]="true"
+        [(ngModel)]="model"
+        [allowText]="config.allowText"
+        [allowObject]="!config.allowText"
+        [validateText]="validateText"
+        [required]="true"
+        [multiple]="true"
+        name="model">
+      <ng-template fsAutocompleteChipsTemplate let-object="object">
+        {{ object.name }}
+    </ng-template>
+  </fs-autocomplete-chips>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button
+        type="submit"
+        [disabled]="!model.length"
+        (click)="complete()"
+        color="primary">
+      {{data.commitLabel}}
+    </button>    
+    <button mat-button [mat-dialog-close]="undefined" type="button" *ngIf="data.cancelShow">{{data.cancelLabel}}</button>
+  </mat-dialog-actions>
+</fs-dialog>
