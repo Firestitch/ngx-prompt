@@ -9,6 +9,7 @@ import {
   FsPromptAutocompleteModule,
   FsPromptConfirmModule,
   FsPromptDateModule,
+  FsPromptAutocompleteChipsModule,
 } from '@firestitch/prompt';
 import { FsExampleModule } from '@firestitch/example';
 import { FsMessageModule } from '@firestitch/message';
@@ -25,6 +26,7 @@ import {
   SelectComponent,
   DateComponent,
   DateTimeComponent,
+  AutocompleteChipsComponent,
 } from './components';
 
 
@@ -40,6 +42,7 @@ import {
     FsPromptDateModule,
     FsPromptAutocompleteModule,
     FsPromptConfirmModule,
+    FsPromptAutocompleteChipsModule,
     FsDatePickerModule.forRoot(),
     FsExampleModule.forRoot(),
     FsMessageModule.forRoot(),
@@ -54,6 +57,7 @@ import {
     ConfirmComponent,
     DateComponent,
     DateTimeComponent,
+    AutocompleteChipsComponent,
   ],
 })
 export class PlaygroundModule {

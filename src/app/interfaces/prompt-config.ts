@@ -19,6 +19,11 @@ export interface IFsPromptConfig {
   default?: any
 }
 
+export interface IFsPromptAutocompleteChipsConfig extends IFsPromptConfig {
+  allowText?: boolean,
+  validateText?: (string?) => boolean;
+}
+
 export interface IFsPromptButtonConfig {
   label?: string;
   class?: string;

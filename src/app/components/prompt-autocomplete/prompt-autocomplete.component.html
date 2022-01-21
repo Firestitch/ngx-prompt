@@ -3,14 +3,14 @@
   <mat-dialog-content tabindex="-1">
     {{data.template}}
     <fs-autocomplete
-      [fetch]="fetch"
-      [fetchOnFocus]="false"
-      [displayWith]="displayWith"
-      [(ngModel)]="result"
-      [placeholder]="data.label"
-      (ngModelChange)="modelChange($event)"
-      [required]="true"
-      name="result">
+        [fetch]="fetch"
+        [fetchOnFocus]="config.fetchOnFocus"
+        [displayWith]="displayWith"
+        [(ngModel)]="result"
+        [placeholder]="data.label"
+        (ngModelChange)="modelChange($event)"
+        [required]="true"
+        name="result">
       <ng-template fsAutocompleteTemplate let-data="data">
         {{ data.name }}
       </ng-template>

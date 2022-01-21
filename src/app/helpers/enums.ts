@@ -3,6 +3,7 @@ export enum PromptType {
   input = 'input',
   select = 'select',
   autocomplete = 'autocomplete',
+  autocompleteChips = 'autocompleteChips',
   date = 'date',
   dateTime = 'datetime'
 }

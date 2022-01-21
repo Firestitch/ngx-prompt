@@ -18,11 +18,19 @@ export class FsPromptAutocompleteComponent {
   public items = [];
   public error = false;
   public model;
+  public config = {
+    fetchOnFocus: true,
+  };
 
   constructor(
     public dialogRef: MatDialogRef<FsPromptAutocompleteComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {}
+    @Inject(MAT_DIALOG_DATA) public data: any,
+  ) {
+    this.config = {
+      ...this.config,
+      ...data.config,
+    };
+  }
 
   public fetch = (name: string) => {
     return this.data.values(name);

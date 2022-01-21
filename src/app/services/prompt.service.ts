@@ -11,7 +11,7 @@ import { throwError, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 
-import { IFsPromptConfig } from '../interfaces';
+import { IFsPromptAutocompleteChipsConfig, IFsPromptConfig } from '../interfaces';
 
 // Configs
 import { FsPromptConfig, FsPromptConfirmConfig } from '../classes';
@@ -22,6 +22,7 @@ import { FsPromptAutocompleteComponent } from '../components/prompt-autocomplete
 import { FsPromptSelectComponent } from '../components/prompt-select/prompt-select.component';
 import { FsPromptInputComponent } from '../components/prompt-input/prompt-input.component';
 import { PromptType } from '../helpers/enums';
+import { FsPromptAutocompleteChipsComponent } from '../components/prompt-autocomplete-chips/prompt-autocomplete-chips.component';
 
 
 
@@ -64,6 +65,15 @@ export class FsPrompt {
    */
   public autocomplete(config: IFsPromptConfig = {}) {
     const openConfig = new FsPromptConfig(config, PromptType.autocomplete);
+
+    return this.open(openConfig);
+  }
+
+  /**
+   * Open modal with autocomplete chips
+   */
+  public autocompleteChips(config: IFsPromptAutocompleteChipsConfig = {}) {
+    const openConfig = new FsPromptConfig(config, PromptType.autocompleteChips);
 
     return this.open(openConfig);
   }
@@ -123,6 +133,14 @@ export class FsPrompt {
 
       case PromptType.autocomplete: {
         return this.dialog.open(FsPromptAutocompleteComponent, config.dialogConfig)
+        .afterClosed()
+        .pipe(
+          switchMap((value) => value === undefined ? throwError('error') : of(value))
+        )
+      }
+
+      case PromptType.autocompleteChips: {
+        return this.dialog.open(FsPromptAutocompleteChipsComponent, config.dialogConfig)
         .afterClosed()
         .pipe(
           switchMap((value) => value === undefined ? throwError('error') : of(value))
