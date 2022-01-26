@@ -1,7 +1,7 @@
 {
   "name": "@firestitch/prompt",
   "title": "Prompt",
-  "version": "8.5.0",
+  "version": "8.5.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/Firestitch/ngx-prompt"
@@ -80,7 +80,6 @@
   "peerDependencies": {
     "zone.js": ">=0.10.0",
     "@firestitch/form": ">=8.0.0",
-    "@firestitch/dialog": ">=8.1.1",
     "@firestitch/datepicker": ">=8.2.3"
   }
 }
