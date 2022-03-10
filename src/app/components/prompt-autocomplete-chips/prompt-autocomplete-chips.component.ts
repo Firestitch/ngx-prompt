@@ -12,7 +12,7 @@ import { IFsPromptAutocompleteChipsConfig, IFsPromptConfig } from '../../interfa
 })
 export class FsPromptAutocompleteChipsComponent {
   
-  @ViewChild('autocomplete', { static: false })
+  @ViewChild('autocomplete')
   public autocomplete: FsPromptAutocompleteChipsComponent;
 
   public model;

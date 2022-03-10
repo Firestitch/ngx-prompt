@@ -12,7 +12,7 @@ import { FsPromptConfirmModule } from './components/prompt-confirm/fs-prompt-con
   ],
 })
 export class FsPromptModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<FsPromptModule> {
     return {
       ngModule: FsPromptModule,
       providers: []
