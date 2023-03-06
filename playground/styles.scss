@@ -4,7 +4,7 @@
 //);
 @use '~@firestitch/style/styles' as fs-style;
 
-@import "../tools/assets/playground.scss";
+@import "~@firestitch/component-tools/assets/playground.scss";
 
 @import "~@firestitch/message/styles.scss";
 @import "~@firestitch/dialog/styles.scss";
