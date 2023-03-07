@@ -48,12 +48,13 @@
     "@firestitch/autocomplete-chips": "^10.2.5",
     "@firestitch/clear": "^8.1.0",
     "@firestitch/common": "^8.0.12",
+    "@firestitch/component-tools": "^12.0.8",
     "@firestitch/date": "^8.0.7",
     "@firestitch/datepicker": "^9.2.3",
-    "@firestitch/form": "^12.0.1",
     "@firestitch/dialog": "^12.0.0",
     "@firestitch/drawer": "^9.2.7",
     "@firestitch/example": "^8.0.0",
+    "@firestitch/form": "^12.0.1",
     "@firestitch/iframe": "^8.0.0",
     "@firestitch/label": "^8.2.10",
     "@firestitch/menu": "^9.1.8",
@@ -72,12 +73,11 @@
     "ngx-toastr": "^14.2.2",
     "npm-run-all": "^4.1.5",
     "parse-messy-time": "^2.1.0",
+    "prompts": "^2.4.2",
     "rxjs": "^6.5.4",
     "tslint": "~6.1.0",
     "typescript": "^4.3.5",
-    "zone.js": "~0.11.4",
-    "prompts": "^2.4.2",
-    "@firestitch/component-tools": "^12.0.7"
+    "zone.js": "~0.11.4"
   },
   "engines": {
     "node": ">=6.0.0"
