@@ -34,8 +34,10 @@ export class FsPromptSelectComponent implements OnInit {
     this.loadItems();
   }
 
-  public modelChange(e) {
-    this.dialogRef.close(this.result);
+  public select() {
+    if(this.result) {
+      this.dialogRef.close(this.result);
+    }
   }
 
   private loadItems() {

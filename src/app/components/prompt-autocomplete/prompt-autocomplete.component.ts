@@ -36,9 +36,9 @@ export class FsPromptAutocompleteComponent {
     return this.data.values(name);
   };
 
-  public modelChange(result) {
-    if (result) {
-      this.dialogRef.close(result.value);
+  public select() {
+    if(this.result) {
+      this.dialogRef.close(this.result.value);  
     }
   }
 

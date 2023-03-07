@@ -1,23 +1,36 @@
-<fs-dialog mobileMode="float">
-  <h2 mat-dialog-title>{{data.title}}</h2>
-  <mat-dialog-content tabindex="-1">
-    {{data.template}}
-    <mat-form-field *ngIf="!loading && !error">
-      <mat-select
-        [placeholder]="data.label"
-        [(ngModel)]="result" name="select"
-        (ngModelChange)="modelChange($event)">
-        <mat-option *ngFor="let item of items" [value]="item.value">
-          {{ item.name }}
-        </mat-option>
-      </mat-select>
-      <mat-hint>{{data.hint}}</mat-hint>
-    </mat-form-field>
-    <ng-container *ngIf="loading">Please wait...</ng-container>
-    <ng-container *ngIf="error">Something went wrong. Please, try again</ng-container>
-  </mat-dialog-content>
+<form>
+  <fs-dialog mobileMode="float">
+    <h2 mat-dialog-title>{{data.title}}</h2>
+    <mat-dialog-content tabindex="-1">
+      {{data.template}}
+      <mat-form-field *ngIf="!loading && !error">
+        <mat-select
+          [placeholder]="data.label"
+          [required]="true"
+          [(ngModel)]="result" name="select">
+          <mat-option *ngFor="let item of items" [value]="item.value">
+            {{ item.name }}
+          </mat-option>
+        </mat-select>
+        <mat-hint>{{data.hint}}</mat-hint>
+      </mat-form-field>
+      <ng-container *ngIf="loading">Please wait...</ng-container>
+      <ng-container *ngIf="error">Something went wrong. Please, try again</ng-container>
+    </mat-dialog-content>
 
-  <mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="undefined" type="button" >{{data.cancelLabel}}</button>
-  </mat-dialog-actions>
-</fs-dialog>
+    <mat-dialog-actions>
+      <button 
+          mat-button
+          color="primary"
+          (click)="select()">
+        Continue
+      </button>    
+      <button 
+        mat-button 
+        [mat-dialog-close]="undefined" 
+        type="button" >
+        {{data.cancelLabel}}
+      </button>
+    </mat-dialog-actions>
+  </fs-dialog>
+</form>
