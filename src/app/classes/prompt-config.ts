@@ -44,6 +44,8 @@ export class FsPromptConfig<T> {
     const config = Object.assign({}, this._dialogConfig);
     config.data = this;
 
+    config.autoFocus ?? true;
+
     return config
   }
 
