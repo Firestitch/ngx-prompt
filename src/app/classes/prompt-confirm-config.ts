@@ -4,7 +4,6 @@ import { IFsPromptConfig } from '../interfaces';
 export class FsPromptConfirmConfig<T> extends FsPromptConfig<T> {
 
   protected applyConfig(config) {
-
     super.applyConfig(config);
 
     if (!config.title) {

@@ -108,7 +108,10 @@ export class FsPrompt {
     switch (config.type) {
       case PromptType.confirm: {
         return this.dialog
-          .open(FsPromptConfirmComponent, config.dialogConfig)
+          .open(FsPromptConfirmComponent, {
+            disableClose: config.escape === false,
+            ...config.dialogConfig,
+          })
           .afterClosed()
           .pipe(
             switchMap((value) => value === undefined ? throwError('error') : of(value))

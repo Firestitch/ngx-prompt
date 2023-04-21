@@ -7,6 +7,7 @@ import { PromptType } from '../helpers/enums';
 
 
 export class FsPromptConfig<T> {
+
   public title = '';
   public template = '';
   public hint = '';
@@ -16,6 +17,7 @@ export class FsPromptConfig<T> {
   public cancelLabel = 'Cancel';
   public commitShow = true;
   public cancelShow = true;
+  public escape = true;
   public default;
   public autofocus = true;
   public type: PromptType;
@@ -24,7 +26,6 @@ export class FsPromptConfig<T> {
   public values: Observable<T> | Promise<T> | T[] | FsValuesFunction = [];
 
   protected _dialogConfig: MatDialogConfig;
-
   protected _defaultDialogConfig = {
     width: '500px',
     height: 'auto'

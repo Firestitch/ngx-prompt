@@ -16,7 +16,8 @@ export interface IFsPromptConfig {
   buttons?: IFsPromptButtonConfig[],
   required?: boolean,
   autofocus?: boolean,
-  default?: any
+  default?: any,
+  escape?: boolean,
 }
 
 export interface IFsPromptAutocompleteChipsConfig extends IFsPromptConfig {
