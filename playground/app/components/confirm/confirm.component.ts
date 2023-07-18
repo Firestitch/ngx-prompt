@@ -12,7 +12,6 @@ export class ConfirmComponent {
 
   constructor(public fsPrompt: FsPrompt) {}
 
-
   public showConfirm() {
     this.fsPrompt.confirm({
       title: 'Confirm',

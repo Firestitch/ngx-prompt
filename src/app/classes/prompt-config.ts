@@ -40,8 +40,7 @@ export class FsPromptConfig<T> {
     this.applyDialogConfig(config);
   }
 
-  get dialogConfig() {
-
+  public get dialogConfig() {
     const config = Object.assign({}, this._dialogConfig);
     config.data = this;
 
@@ -50,7 +49,7 @@ export class FsPromptConfig<T> {
     return config
   }
 
-  set dialogConfig(value) {
+  public set dialogConfig(value) {
     this._dialogConfig = value;
   }
 
@@ -75,7 +74,11 @@ export class FsPromptConfig<T> {
     const inputDialogConfig = config.dialogConfig;
 
     // Previously let's assign default config
-    this._dialogConfig = { ...this._defaultDialogConfig, autoFocus: this.autofocus };
+    this._dialogConfig = { 
+      ...this._defaultDialogConfig, 
+      autoFocus: this.autofocus,
+      disableClose: config.escape === false,
+    };
 
     // Then assign passed config
     if (inputDialogConfig) {
