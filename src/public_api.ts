@@ -12,7 +12,7 @@ export { FsPromptInputModule } from './app/components/prompt-input/fs-prompt-inp
 export { FsPromptDateModule } from './app/components/prompt-date/fs-prompt-date.module';
 
 // Classes
-export { FsPromptConfig } from './app/classes/prompt-config';
+export * from './app/classes/prompt-config';
 export { FsPromptConfirmConfig } from './app/classes/prompt-confirm-config';
 
 // Interfaces

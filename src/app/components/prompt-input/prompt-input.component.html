@@ -1,13 +1,18 @@
 <fs-dialog mobileMode="float">
   <form [formGroup]="promptInputForm">
-    <h2 mat-dialog-title *ngIf="data.title">{{data.title}}</h2>
+    <h2 mat-dialog-title *ngIf="config.title">{{config.title}}</h2>
     <mat-dialog-content tabindex="-1">
-      {{data.template}}
+      {{config.template}}
       <mat-form-field>
-        <input matInput [placeholder]="data.label" formControlName="input" name="input">
+        <ng-container *ngIf="config.multiline">
+          <textarea matInput [placeholder]="config.label" cdkTextareaAutosize formControlName="input" name="input"></textarea>
+        </ng-container>
+        <ng-container *ngIf="!config.multiline">
+          <input matInput [placeholder]="config.label" formControlName="input" name="input">
+        </ng-container>
         <mat-hint>
           <ng-container *ngIf="inputControl.valid || !inputControl.dirty; else invalidMessage">
-            {{data.hint}}
+            {{config.hint}}
           </ng-container>
 
           <ng-template #invalidMessage>
@@ -20,15 +25,16 @@
     </mat-dialog-content>
 
     <mat-dialog-actions>
-      <button mat-button
-              type="submit"
-              *ngIf="data.commitShow"
-              (click)="complete()"
-              [disabled]="inputControl.invalid"
-              color="primary">
-        {{data.commitLabel}}
+      <button 
+          mat-button
+          type="submit"
+          *ngIf="config.commitShow"
+          (click)="complete()"
+          [disabled]="inputControl.invalid"
+          color="primary">
+        {{config.commitLabel}}
       </button>
-      <button mat-button [mat-dialog-close]="undefined" type="button" *ngIf="data.cancelShow">{{data.cancelLabel}}</button>
+      <button mat-button [mat-dialog-close]="undefined" type="button" *ngIf="config.cancelShow">{{config.cancelLabel}}</button>
     </mat-dialog-actions>
   </form>
 </fs-dialog>

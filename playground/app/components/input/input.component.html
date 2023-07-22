@@ -1,4 +1,7 @@
-<button mat-raised-button color="primary" (click)="openInput()">Open Input</button>
+<div fxLayout="row" fxLayoutGap="5px">
+  <button mat-raised-button color="primary" (click)="openInput(false)">Open Input</button>
+  <button mat-raised-button color="primary" (click)="openInput(true)">Open Multiline Input</button>
+</div>
 
 <div *ngIf="inputValue !== false">
   <fieldset>

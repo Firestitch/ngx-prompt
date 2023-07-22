@@ -11,7 +11,7 @@ import { throwError, of } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
 
-import { IFsPromptAutocompleteChipsConfig, IFsPromptConfig } from '../interfaces';
+import { IFsPromptAutocompleteChipsConfig, IFsPromptConfig, IFsPromptInputConfig } from '../interfaces';
 
 // Configs
 import { FsPromptConfig, FsPromptConfirmConfig } from '../classes';
@@ -45,7 +45,7 @@ export class FsPrompt {
   /**
    * Open window with input field for filling
    */
-  public input(config: IFsPromptConfig = {}) {
+  public input(config: IFsPromptInputConfig = {}) {
     const openConfig = new FsPromptConfig(config, PromptType.input);
 
     return this.open(openConfig);

@@ -10,16 +10,17 @@ export class InputComponent {
 
   public inputValue: string | boolean = false;
 
-  constructor(public fsPrompt: FsPrompt) {}
+  constructor(private _prompt: FsPrompt) {}
 
-  public openInput() {
-    this.fsPrompt.input({
+  public openInput(multiline) {
+    this._prompt.input({
       hint: 'Use commas to separate multiple email addresses',
       label: 'Please an email adresses',
       title: 'Input Prompt',
       commitLabel: 'Create',
       required: true,
       default: 'Default Value',
+      multiline,
     }).subscribe((value: string | boolean) => {
       if (value !== false) {
         this.inputValue = value;
