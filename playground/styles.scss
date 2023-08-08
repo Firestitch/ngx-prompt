@@ -1,7 +1,8 @@
-@use '~@angular/material' as mat;
-//@use '~@firestitch/style/variables' with (
-//  $palette: mat.$blue-palette
-//);
+@use 'palette';
+// @use '~@angular/material' as mat;
+@use '~@firestitch/style/variables' with (
+  $palette: palette.$primary-palette
+);
 @use '~@firestitch/style/styles' as fs-style;
 
 @import "~@firestitch/component-tools/assets/playground.scss";
@@ -9,9 +10,11 @@
 @import "~@firestitch/message/styles.scss";
 @import "~@firestitch/dialog/styles.scss";
 @import "~@firestitch/datepicker/styles.scss";
+@import '~@firestitch/form/styles';
 @import "../src/app/styles";
 
 @include fs-style.core();
-@include mat.core();
+// @include mat.core();
+@include fs-form(palette.$app-theme);
 
 //@include fs-date-picker(mat.$blue-palette);

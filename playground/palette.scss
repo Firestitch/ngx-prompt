@@ -1,0 +1,24 @@
+@use '@angular/material' as mat;
+
+$palette: (
+  100: var(--brand-primary-color),
+  500: var(--brand-primary-color),
+  700: var(--brand-primary-color),
+  primary-rgb: var(--brand-primary-color-rgb),
+  contrast: (
+    100: white,
+    500: white,
+    700: white,
+    primary-rgb: white,
+  )
+);
+
+$palette-default: 500;
+
+$primary-palette: mat.define-palette($palette, $palette-default);
+$accent-palette: mat.define-palette($palette, $palette-default);
+$warn-palette: mat.define-palette(mat.$red-palette);
+
+$app-theme: mat.define-light-theme($primary-palette, $accent-palette, $warn-palette);
+
+$primary-color: mat.get-color-from-palette($primary-palette);

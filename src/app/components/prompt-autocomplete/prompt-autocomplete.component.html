@@ -1,4 +1,4 @@
-<form>
+<form fsForm [submit]="select" [dirtySubmitButton]="false">
   <fs-dialog mobileMode="float">
     <h2 mat-dialog-title>{{data.title}}</h2>
     <mat-dialog-content tabindex="-1">
@@ -21,8 +21,7 @@
       <button 
           mat-button
           color="primary"
-          type="button"
-          (click)="select()">
+          type="submit">
         Continue
       </button>  
       <button mat-button [mat-dialog-close]="undefined" type="button" *ngIf="data.cancelShow">{{data.cancelLabel}}</button>

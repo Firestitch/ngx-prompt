@@ -7,7 +7,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 
 import { FsAutocompleteModule } from '@firestitch/autocomplete';
-
+import { FsFormModule } from '@firestitch/form';
 import { FsDialogModule } from '@firestitch/dialog';
 
 // Dialog
@@ -25,7 +25,8 @@ import { FsPromptAutocompleteComponent } from './prompt-autocomplete.component';
 
     // Firestitch
     FsAutocompleteModule,
-    FsDialogModule
+    FsDialogModule,
+    FsFormModule,
   ],
   entryComponents: [
     FsPromptAutocompleteComponent,

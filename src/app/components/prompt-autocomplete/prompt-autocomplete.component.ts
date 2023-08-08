@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
 @Component({
   selector: 'fs-prompt-autocomplete',
@@ -36,10 +36,10 @@ export class FsPromptAutocompleteComponent {
     return this.data.values(name);
   };
 
-  public select() {
-    if(this.result) {
-      this.dialogRef.close(this.result.value);  
-    }
+  public select = () => {
+    this.dialogRef.close(this.result.value); 
+
+    return of(this.result.value);
   }
 
   public displayWith(value) {
