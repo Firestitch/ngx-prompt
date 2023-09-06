@@ -13,7 +13,3 @@
 @import "../src/app/styles";
 
 @include fs-style.core();
-// @include mat.core();
-@include fs-form(palette.$app-theme);
-
-//@include fs-date-picker(mat.$blue-palette);

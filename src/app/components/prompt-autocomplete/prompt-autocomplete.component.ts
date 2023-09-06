@@ -36,10 +36,10 @@ export class FsPromptAutocompleteComponent {
     return this.data.values(name);
   };
 
-  public select = () => {
+  public select() {
     this.dialogRef.close(this.result.value); 
 
-    return of(this.result.value);
+    //return of(this.result.value);
   }
 
   public displayWith(value) {
