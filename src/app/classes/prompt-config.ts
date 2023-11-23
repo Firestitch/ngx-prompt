@@ -43,8 +43,7 @@ export class FsPromptConfig<T> {
   public get dialogConfig() {
     const config = { ...this._dialogConfig };
     config.data = this;
-
-    config.autoFocus ?? true;
+    config.autoFocus = config.autoFocus ?? true;
 
     return config;
   }
@@ -55,7 +54,10 @@ export class FsPromptConfig<T> {
 
   public addDefaultPanelClasses(type: string) {
     // FIXME replace this with FsUtil or something else
-    if (typeof this._dialogConfig.panelClass === 'string' || this._dialogConfig.panelClass instanceof String) {
+    if (
+      typeof this._dialogConfig.panelClass === 'string' ||
+      this._dialogConfig.panelClass instanceof String
+    ) {
       this._dialogConfig.panelClass = this._dialogConfig.panelClass.split(' ');
     }
 
@@ -77,7 +79,7 @@ export class FsPromptConfig<T> {
     this._dialogConfig = {
       ...this._defaultDialogConfig,
       autoFocus: this.autofocus,
-      disableClose: !config.escape,
+      disableClose: (config.escape ?? false),
     };
 
     // Then assign passed config
