@@ -1,4 +1,5 @@
 import { MatDialogConfig } from '@angular/material/dialog';
+
 import { Observable } from 'rxjs';
 
 export interface IFsPromptConfig {
@@ -11,22 +12,22 @@ export interface IFsPromptConfig {
   cancelLabel?: string;
   commitShow?: boolean;
   cancelShow?: boolean;
-  values? (keyword): Observable<{name, value}[]>;
+  values?(keyword): Observable<{ name; value }[]>;
   dialogConfig?: MatDialogConfig;
-  buttons?: IFsPromptButtonConfig[],
-  required?: boolean,
-  autofocus?: boolean,
-  default?: any,
-  escape?: boolean,
+  buttons?: IFsPromptButtonConfig[];
+  required?: boolean;
+  autofocus?: boolean;
+  default?: any;
+  escape?: boolean;
 }
 
 export interface IFsPromptAutocompleteChipsConfig extends IFsPromptConfig {
-  allowText?: boolean,
+  allowText?: boolean;
   validateText?: (string?) => boolean;
 }
 
 export interface IFsPromptInputConfig extends IFsPromptConfig {
-  multiline?: boolean,
+  multiline?: boolean;
 }
 
 export interface IFsPromptButtonConfig {

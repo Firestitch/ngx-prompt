@@ -8,6 +8,7 @@
     <ng-container *ngFor="let button of data.buttons; let index = index">
       <button 
           mat-button
+          [fsAutofocus]="index === 0"
           (click)="close(button)"
           type="button"
           [color]="button.color"

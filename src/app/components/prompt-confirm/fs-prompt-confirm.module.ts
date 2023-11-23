@@ -1,27 +1,25 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-// Material
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
+import { FsCommonModule } from '@firestitch/common';
 import { FsDialogModule } from '@firestitch/dialog';
 
-// Dialog
 import { FsPromptConfirmComponent } from './prompt-confirm.component';
 
 @NgModule({
   imports: [
-    // Angular
     CommonModule,
     FormsModule,
 
-    // Material
     MatDialogModule,
     MatButtonModule,
+    FsCommonModule,
 
-    FsDialogModule
+    FsDialogModule,
   ],
   entryComponents: [
     FsPromptConfirmComponent,
@@ -30,4 +28,4 @@ import { FsPromptConfirmComponent } from './prompt-confirm.component';
     FsPromptConfirmComponent,
   ],
 })
-export class FsPromptConfirmModule {}
+export class FsPromptConfirmModule { }

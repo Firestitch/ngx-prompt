@@ -1,5 +1,6 @@
-import { FsPromptConfig } from './prompt-config';
 import { IFsPromptConfig } from '../interfaces';
+
+import { FsPromptConfig } from './prompt-config';
 
 export class FsPromptConfirmConfig<T> extends FsPromptConfig<T> {
 
@@ -11,14 +12,14 @@ export class FsPromptConfirmConfig<T> extends FsPromptConfig<T> {
     }
 
     if (!config.class) {
-      config.class = 'fs-modal-confirm'
+      config.class = 'fs-modal-confirm';
     }
 
     if (!this.buttons.length) {
       if (this.commitShow) {
         this.buttons.push({
           label: this.commitLabel,
-          color: 'primary'
+          color: 'primary',
         });
       }
 
@@ -26,7 +27,7 @@ export class FsPromptConfirmConfig<T> extends FsPromptConfig<T> {
         this.buttons.push({
           label: this.cancelLabel,
           cancel: true,
-          color: ''
+          color: '',
         });
       }
     }

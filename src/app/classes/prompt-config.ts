@@ -1,9 +1,9 @@
 import { MatDialogConfig } from '@angular/material/dialog';
+
 import { Observable } from 'rxjs';
 
-import { FsValuesFunction } from '../interfaces';
-import { IFsPromptConfig } from '../interfaces';
 import { PromptType } from '../helpers/enums';
+import { FsValuesFunction, IFsPromptConfig } from '../interfaces';
 
 
 export class FsPromptConfig<T> {
@@ -28,7 +28,7 @@ export class FsPromptConfig<T> {
   protected _dialogConfig: MatDialogConfig;
   protected _defaultDialogConfig = {
     width: '500px',
-    height: 'auto'
+    height: 'auto',
   };
 
   constructor(
@@ -41,12 +41,12 @@ export class FsPromptConfig<T> {
   }
 
   public get dialogConfig() {
-    const config = Object.assign({}, this._dialogConfig);
+    const config = { ...this._dialogConfig };
     config.data = this;
 
     config.autoFocus ?? true;
 
-    return config
+    return config;
   }
 
   public set dialogConfig(value) {
@@ -63,7 +63,7 @@ export class FsPromptConfig<T> {
       this._dialogConfig.panelClass = [];
     }
 
-    this._dialogConfig.panelClass.push('fs-prompt', 'fs-prompt-' + type);
+    this._dialogConfig.panelClass.push('fs-prompt', `fs-prompt-${type}`);
   }
 
   protected applyConfig(config: IFsPromptConfig) {
@@ -74,10 +74,10 @@ export class FsPromptConfig<T> {
     const inputDialogConfig = config.dialogConfig;
 
     // Previously let's assign default config
-    this._dialogConfig = { 
-      ...this._defaultDialogConfig, 
+    this._dialogConfig = {
+      ...this._defaultDialogConfig,
       autoFocus: this.autofocus,
-      disableClose: config.escape === false,
+      disableClose: !config.escape,
     };
 
     // Then assign passed config

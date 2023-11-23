@@ -1,4 +1,4 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 
 import { FsPromptConfirmModule } from './components/prompt-confirm/fs-prompt-confirm.module';
 
@@ -12,10 +12,10 @@ import { FsPromptConfirmModule } from './components/prompt-confirm/fs-prompt-con
   ],
 })
 export class FsPromptModule {
-  static forRoot(): ModuleWithProviders<FsPromptModule> {
+  public static forRoot(): ModuleWithProviders<FsPromptModule> {
     return {
       ngModule: FsPromptModule,
-      providers: []
-    }
+      providers: [],
+    };
   }
 }

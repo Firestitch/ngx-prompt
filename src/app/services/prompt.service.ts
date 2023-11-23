@@ -1,29 +1,24 @@
-import { FsPromptDateComponent } from './../components/prompt-date/prompt-date.component';
 import {
   Injectable,
 } from '@angular/core';
 
-// Modal
 import { MatDialog } from '@angular/material/dialog';
 
-// RX
-import { throwError, of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-
-import { IFsPromptAutocompleteChipsConfig, IFsPromptConfig, IFsPromptInputConfig } from '../interfaces';
-
-// Configs
 import { FsPromptConfig, FsPromptConfirmConfig } from '../classes';
-
-// Components for open in modal
-import { FsPromptConfirmComponent } from '../components/prompt-confirm/prompt-confirm.component';
-import { FsPromptAutocompleteComponent } from '../components/prompt-autocomplete/prompt-autocomplete.component';
-import { FsPromptSelectComponent } from '../components/prompt-select/prompt-select.component';
-import { FsPromptInputComponent } from '../components/prompt-input/prompt-input.component';
-import { PromptType } from '../helpers/enums';
 import { FsPromptAutocompleteChipsComponent } from '../components/prompt-autocomplete-chips/prompt-autocomplete-chips.component';
+import { FsPromptAutocompleteComponent } from '../components/prompt-autocomplete/prompt-autocomplete.component';
+import { FsPromptConfirmComponent } from '../components/prompt-confirm/prompt-confirm.component';
+import { FsPromptInputComponent } from '../components/prompt-input/prompt-input.component';
+import { FsPromptSelectComponent } from '../components/prompt-select/prompt-select.component';
+import { PromptType } from '../helpers/enums';
+import {
+  IFsPromptAutocompleteChipsConfig, IFsPromptConfig, IFsPromptInputConfig,
+} from '../interfaces';
 
+import { FsPromptDateComponent } from './../components/prompt-date/prompt-date.component';
 
 
 @Injectable({
@@ -31,7 +26,9 @@ import { FsPromptAutocompleteChipsComponent } from '../components/prompt-autocom
 })
 export class FsPrompt {
 
-  constructor(private dialog: MatDialog) {}
+  constructor(
+    private _dialog: MatDialog,
+  ) { }
 
   /**
    * Open confirmation window and return close observable
@@ -39,7 +36,7 @@ export class FsPrompt {
   public confirm(config: IFsPromptConfig = {}) {
     const openConfig = new FsPromptConfirmConfig(config, PromptType.confirm);
 
-    return this.open(openConfig);
+    return this._open(openConfig);
   }
 
   /**
@@ -48,7 +45,7 @@ export class FsPrompt {
   public input(config: IFsPromptInputConfig = {}) {
     const openConfig = new FsPromptConfig(config, PromptType.input);
 
-    return this.open(openConfig);
+    return this._open(openConfig);
   }
 
   /**
@@ -57,7 +54,7 @@ export class FsPrompt {
   public select(config: IFsPromptConfig = {}) {
     const openConfig = new FsPromptConfig(config, PromptType.select);
 
-    return this.open(openConfig);
+    return this._open(openConfig);
   }
 
   /**
@@ -66,7 +63,7 @@ export class FsPrompt {
   public autocomplete(config: IFsPromptConfig = {}) {
     const openConfig = new FsPromptConfig(config, PromptType.autocomplete);
 
-    return this.open(openConfig);
+    return this._open(openConfig);
   }
 
   /**
@@ -75,7 +72,7 @@ export class FsPrompt {
   public autocompleteChips(config: IFsPromptAutocompleteChipsConfig = {}) {
     const openConfig = new FsPromptConfig(config, PromptType.autocompleteChips);
 
-    return this.open(openConfig);
+    return this._open(openConfig);
   }
 
   /**
@@ -85,7 +82,7 @@ export class FsPrompt {
     config.autofocus = false;
     const openConfig = new FsPromptConfig(config, PromptType.dateTime);
 
-    return this.open(openConfig);
+    return this._open(openConfig);
   }
 
   /**
@@ -95,69 +92,69 @@ export class FsPrompt {
     config.autofocus = false;
     const openConfig = new FsPromptConfig(config, PromptType.date);
 
-    return this.open(openConfig);
+    return this._open(openConfig);
   }
 
   /**
    * Open modal dialog depends from type
    */
-  private open(config: FsPromptConfig<any> | FsPromptConfirmConfig<any>) {
+  private _open(config: FsPromptConfig<any> | FsPromptConfirmConfig<any>) {
     // Default classes for modal
     config.addDefaultPanelClasses(config.type);
 
     switch (config.type) {
       case PromptType.confirm: {
-        return this.dialog
+        return this._dialog
           .open(FsPromptConfirmComponent, config.dialogConfig)
           .afterClosed()
           .pipe(
-            switchMap((value) => value === undefined ? throwError('error') : of(value))
+            switchMap((value) => value === undefined ? throwError('error') : of(value)),
           );
       }
 
       case PromptType.input: {
-        return this.dialog.open(FsPromptInputComponent, config.dialogConfig)
-        .afterClosed()
-        .pipe(
-          switchMap((value) => value === undefined ? throwError('error') : of(value))
-        );
+        return this._dialog.open(FsPromptInputComponent, config.dialogConfig)
+          .afterClosed()
+          .pipe(
+            switchMap((value) => value === undefined ? throwError('error') : of(value)),
+          );
       }
 
       case PromptType.select: {
-        return this.dialog.open(FsPromptSelectComponent, config.dialogConfig)
-        .afterClosed()
-        .pipe(
-          switchMap((value) => value === undefined ? throwError('error') : of(value))
-        )
+        return this._dialog.open(FsPromptSelectComponent, config.dialogConfig)
+          .afterClosed()
+          .pipe(
+            switchMap((value) => value === undefined ? throwError('error') : of(value)),
+          );
       }
 
       case PromptType.autocomplete: {
-        return this.dialog.open(FsPromptAutocompleteComponent, config.dialogConfig)
-        .afterClosed()
-        .pipe(
-          switchMap((value) => value === undefined ? throwError('error') : of(value))
-        )
+        return this._dialog.open(FsPromptAutocompleteComponent, config.dialogConfig)
+          .afterClosed()
+          .pipe(
+            switchMap((value) => value === undefined ? throwError('error') : of(value)),
+          );
       }
 
       case PromptType.autocompleteChips: {
-        return this.dialog.open(FsPromptAutocompleteChipsComponent, config.dialogConfig)
-        .afterClosed()
-        .pipe(
-          switchMap((value) => value === undefined ? throwError('error') : of(value))
-        )
+        return this._dialog.open(FsPromptAutocompleteChipsComponent, config.dialogConfig)
+          .afterClosed()
+          .pipe(
+            switchMap((value) => value === undefined ? throwError('error') : of(value)),
+          );
       }
 
       case PromptType.date:
       case PromptType.dateTime: {
 
-        return this.dialog.open(FsPromptDateComponent, config.dialogConfig)
-        .afterClosed()
-        .pipe(
-          switchMap((value) => value === undefined ? throwError('error') : of(value))
-        )
+        return this._dialog.open(FsPromptDateComponent, config.dialogConfig)
+          .afterClosed()
+          .pipe(
+            switchMap((value) => value === undefined ? throwError('error') : of(value)),
+          );
       }
 
-      default: return throwError('Erorr')
+      default: return throwError('Erorr');
     }
   }
 
