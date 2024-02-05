@@ -8,10 +8,9 @@ import {
 
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-import { IFsPromptSelectConfig } from 'src/app/interfaces';
-
 import { ConverterType } from '../../helpers/enums';
 import { valuesConverter } from '../../helpers/values-converter';
+import { IFsPromptSelectConfig } from '../../interfaces';
 
 
 @Component({
