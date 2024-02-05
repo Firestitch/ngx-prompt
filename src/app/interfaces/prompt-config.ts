@@ -23,7 +23,23 @@ export interface IFsPromptConfig {
 
 export interface IFsPromptAutocompleteChipsConfig extends IFsPromptConfig {
   allowText?: boolean;
-  validateText?: (string?) => boolean;
+  validateText?: (text?: string) => boolean;
+}
+
+export interface IFsPromptAutocompleteConfig extends IFsPromptConfig {
+  commitOnSelect?: boolean;
+  fetchOnFocus?: boolean;
+}
+
+export interface IFsPromptSelectConfig extends IFsPromptConfig {
+  commitOnSelect?: boolean;
+}
+
+export interface IFsPromptDateConfig extends IFsPromptConfig {
+}
+
+export interface IFsPromptDateTimeConfig extends IFsPromptConfig {
+
 }
 
 export interface IFsPromptInputConfig extends IFsPromptConfig {

@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 import { FsPrompt } from '@firestitch/prompt';
 
 import { Subject } from 'rxjs';
 
 @Component({
   selector: 'select-example',
-  templateUrl: 'select.component.html'
+  templateUrl: './select.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SelectComponent {
 
   public selectValue = false;
 
-  constructor(public fsPrompt: FsPrompt) {}
+  constructor(private _prompt: FsPrompt) {}
 
   public openSelect() {
     const testObservable = new Subject<any>();
@@ -19,7 +21,7 @@ export class SelectComponent {
     // Array test case
     const simpleArray = [
       { name: 'Dave', value: { id: 1, name: 'Dave' } },
-      { name: 'Mike', value: { id: 2, name: 'Mike' } }
+      { name: 'Mike', value: { id: 2, name: 'Mike' } },
     ];
 
     // Observable test case
@@ -28,14 +30,15 @@ export class SelectComponent {
       // testObservable.error('error')
     }, 100);
 
-    this.fsPrompt.select({
+    this._prompt.select({
       label: 'Please select a user',
       hint: 'Hint: His name is Dave',
       title: 'Select Prompt',
       required: true,
+      commitOnSelect: true,
       values: () => {
         return testObservable;
-      }
+      },
     }).subscribe((result: any) => {
       this.selectValue = result;
     }, () => {

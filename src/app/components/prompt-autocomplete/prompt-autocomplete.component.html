@@ -9,6 +9,7 @@
           [displayWith]="displayWith"
           [(ngModel)]="result"
           [placeholder]="data.label"
+          (ngModelChange)="change()"
           [required]="true"
           name="result">
         <ng-template fsAutocompleteTemplate let-data="data">
@@ -18,13 +19,23 @@
     </mat-dialog-content>
 
     <mat-dialog-actions>
-      <button 
-          mat-button
-          color="primary"
-          type="submit">
-        Continue
-      </button>  
-      <button mat-button [mat-dialog-close]="undefined" type="button" *ngIf="data.cancelShow">{{data.cancelLabel}}</button>
+      <ng-container *ngIf="!config.commitOnSelect">
+        <button 
+            mat-button
+            color="primary"
+            type="submit">
+          Continue
+        </button>  
+      </ng-container>
+      <ng-container *ngIf="data.cancelShow">
+        <button 
+            mat-button 
+            [color]="config.commitOnSelect ? 'primary' : ''"
+            [mat-dialog-close]="undefined" 
+            type="button">
+          {{data.cancelLabel}}
+        </button>
+      </ng-container>
     </mat-dialog-actions>
   </fs-dialog>
 </form>

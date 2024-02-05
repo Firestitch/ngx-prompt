@@ -1,33 +1,34 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+
+import { FsDatePickerModule } from '@firestitch/datepicker';
+import { FsExampleModule } from '@firestitch/example';
+import { FsMessageModule } from '@firestitch/message';
 import {
-  FsPromptInputModule,
-  FsPromptSelectModule,
+  FsPromptAutocompleteChipsModule,
   FsPromptAutocompleteModule,
   FsPromptConfirmModule,
   FsPromptDateModule,
-  FsPromptAutocompleteChipsModule,
+  FsPromptInputModule,
+  FsPromptSelectModule,
 } from '@firestitch/prompt';
-import { FsExampleModule } from '@firestitch/example';
-import { FsMessageModule } from '@firestitch/message';
-import { FsDatePickerModule } from '@firestitch/datepicker';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
-import { AppMaterialModule } from './material.module';
 import { AppComponent } from './app.component';
 import {
+  AutocompleteChipsComponent,
   AutocompleteComponent,
   ConfirmComponent,
-  InputComponent,
-  SelectComponent,
   DateComponent,
   DateTimeComponent,
-  AutocompleteChipsComponent,
+  InputComponent,
+  SelectComponent,
 } from './components';
+import { AppMaterialModule } from './material.module';
 
 
 @NgModule({

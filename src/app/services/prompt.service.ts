@@ -15,7 +15,8 @@ import { FsPromptInputComponent } from '../components/prompt-input/prompt-input.
 import { FsPromptSelectComponent } from '../components/prompt-select/prompt-select.component';
 import { PromptType } from '../helpers/enums';
 import {
-  IFsPromptAutocompleteChipsConfig, IFsPromptConfig, IFsPromptInputConfig,
+  IFsPromptAutocompleteChipsConfig, IFsPromptAutocompleteConfig, IFsPromptConfig, IFsPromptDateConfig, IFsPromptDateTimeConfig, IFsPromptInputConfig,
+  IFsPromptSelectConfig,
 } from '../interfaces';
 
 import { FsPromptDateComponent } from './../components/prompt-date/prompt-date.component';
@@ -51,7 +52,7 @@ export class FsPrompt {
   /**
    * Open modal with list
    */
-  public select(config: IFsPromptConfig = {}) {
+  public select(config: IFsPromptSelectConfig = {}) {
     const openConfig = new FsPromptConfig(config, PromptType.select);
 
     return this._open(openConfig);
@@ -60,7 +61,7 @@ export class FsPrompt {
   /**
    * Open modal with autocomplete
    */
-  public autocomplete(config: IFsPromptConfig = {}) {
+  public autocomplete(config: IFsPromptAutocompleteConfig = {}) {
     const openConfig = new FsPromptConfig(config, PromptType.autocomplete);
 
     return this._open(openConfig);
@@ -78,7 +79,7 @@ export class FsPrompt {
   /**
    * Open modal with list
    */
-  public dateTime(config: IFsPromptConfig = {}) {
+  public dateTime(config: IFsPromptDateTimeConfig = {}) {
     config.autofocus = false;
     const openConfig = new FsPromptConfig(config, PromptType.dateTime);
 
@@ -88,7 +89,7 @@ export class FsPrompt {
   /**
    * Open modal with list
    */
-  public date(config: IFsPromptConfig = {}) {
+  public date(config: IFsPromptDateConfig = {}) {
     config.autofocus = false;
     const openConfig = new FsPromptConfig(config, PromptType.date);
 

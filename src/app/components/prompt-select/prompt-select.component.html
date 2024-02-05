@@ -8,6 +8,7 @@
             [placeholder]="data.label"
             [required]="true"
             [(ngModel)]="result" 
+            (ngModelChange)="change()"
             name="select">
           <mat-option *ngFor="let item of items" [value]="item.value">
             {{ item.name }}
@@ -19,14 +20,17 @@
     </mat-dialog-content>
 
     <mat-dialog-actions>
-      <button 
-          mat-button
-          color="primary"
-          (click)="select()">
-        Continue
-      </button>    
+      <ng-container *ngIf="!config.commitOnSelect">
+        <button 
+            mat-button
+            color="primary"
+            (click)="select()">
+          Continue
+        </button>    
+      </ng-container>
       <button 
           mat-button 
+          [color]="config.commitOnSelect ? 'primary' : ''"
           [mat-dialog-close]="undefined" 
           type="button" >
         {{data.cancelLabel}}

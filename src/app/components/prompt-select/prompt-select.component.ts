@@ -3,17 +3,20 @@ import {
   ChangeDetectorRef,
   Component,
   Inject,
-  OnInit
+  OnInit,
 } from '@angular/core';
+
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-import { valuesConverter } from '../../helpers/values-converter';
+import { IFsPromptSelectConfig } from 'src/app/interfaces';
+
 import { ConverterType } from '../../helpers/enums';
+import { valuesConverter } from '../../helpers/values-converter';
 
 
 @Component({
-  templateUrl: 'prompt-select.component.html',
-  styleUrls: [ '../../prompt.css' ],
+  templateUrl: './prompt-select.component.html',
+  styleUrls: ['../../prompt.css'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FsPromptSelectComponent implements OnInit {
@@ -22,6 +25,7 @@ export class FsPromptSelectComponent implements OnInit {
   public loading = false;
   public items = [];
   public error = false;
+  public config: IFsPromptSelectConfig = {};
 
   constructor(
     public dialogRef: MatDialogRef<FsPromptSelectComponent>,
@@ -31,7 +35,17 @@ export class FsPromptSelectComponent implements OnInit {
   }
 
   public ngOnInit() {
-    this.loadItems();
+    this.config = {
+      ...this.config,
+      ...this.data.config,
+    };
+    this._loadItems();
+  }
+
+  public change() {
+    if(this.config.commitOnSelect) {
+      this.select();
+    }
   }
 
   public select() {
@@ -40,22 +54,22 @@ export class FsPromptSelectComponent implements OnInit {
     }
   }
 
-  private loadItems() {
+  private _loadItems() {
     const result = valuesConverter(this.data.values);
 
     switch (result.type) {
       case ConverterType.observable: {
         this.loading = true;
         result.values
-        .subscribe((response) => {
-          this.items = response;
-          this.loading = false;
-          this._cdRef.markForCheck();
-        }, () => {
-          this.error = true;
-          this.loading = false;
-          this._cdRef.markForCheck();
-        })
+          .subscribe((response) => {
+            this.items = response;
+            this.loading = false;
+            this._cdRef.markForCheck();
+          }, () => {
+            this.error = true;
+            this.loading = false;
+            this._cdRef.markForCheck();
+          });
       } break;
 
       case ConverterType.promise: {
@@ -68,7 +82,7 @@ export class FsPromptSelectComponent implements OnInit {
           this.error = true;
           this.loading = false;
           this._cdRef.markForCheck();
-        })
+        });
       } break;
 
       case ConverterType.array: {
