@@ -15,24 +15,19 @@ import { FsPromptDateComponent } from './prompt-date.component';
 
 
 @NgModule({
-  imports: [
-    // Angular
-    CommonModule,
-    ReactiveFormsModule,
-
-    // Material
-    MatDialogModule,
-    MatButtonModule,
-    MatInputModule,
-
-    FsDialogModule,
-    FsDatePickerModule,
-  ],
-  entryComponents: [
-    FsPromptDateComponent,
-  ],
-  declarations: [
-    FsPromptDateComponent,
-  ],
+    imports: [
+        // Angular
+        CommonModule,
+        ReactiveFormsModule,
+        // Material
+        MatDialogModule,
+        MatButtonModule,
+        MatInputModule,
+        FsDialogModule,
+        FsDatePickerModule,
+    ],
+    declarations: [
+        FsPromptDateComponent,
+    ]
 })
 export class FsPromptDateModule {}

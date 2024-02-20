@@ -15,24 +15,19 @@ import { FsPromptSelectComponent } from './prompt-select.component';
 
 
 @NgModule({
-  imports: [
-    // Angular
-    CommonModule,
-    FormsModule,
-
-    // Material
-    MatDialogModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatSelectModule,
-
-    FsDialogModule
-  ],
-  entryComponents: [
-    FsPromptSelectComponent,
-  ],
-  declarations: [
-    FsPromptSelectComponent,
-  ],
+    imports: [
+        // Angular
+        CommonModule,
+        FormsModule,
+        // Material
+        MatDialogModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatSelectModule,
+        FsDialogModule
+    ],
+    declarations: [
+        FsPromptSelectComponent,
+    ]
 })
 export class FsPromptSelectModule {}

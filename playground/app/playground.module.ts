@@ -32,34 +32,33 @@ import { AppMaterialModule } from './material.module';
 
 
 @NgModule({
-  bootstrap: [AppComponent],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppMaterialModule,
-    FormsModule,
-    FsPromptInputModule,
-    FsPromptSelectModule,
-    FsPromptDateModule,
-    FsPromptAutocompleteModule,
-    FsPromptConfirmModule,
-    FsPromptAutocompleteChipsModule,
-    FsDatePickerModule.forRoot(),
-    FsExampleModule.forRoot(),
-    FsMessageModule.forRoot(),
-    ToastrModule.forRoot({ preventDuplicates: true }),
-  ],
-  entryComponents: [],
-  declarations: [
-    AppComponent,
-    SelectComponent,
-    AutocompleteComponent,
-    InputComponent,
-    ConfirmComponent,
-    DateComponent,
-    DateTimeComponent,
-    AutocompleteChipsComponent,
-  ],
+    bootstrap: [AppComponent],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppMaterialModule,
+        FormsModule,
+        FsPromptInputModule,
+        FsPromptSelectModule,
+        FsPromptDateModule,
+        FsPromptAutocompleteModule,
+        FsPromptConfirmModule,
+        FsPromptAutocompleteChipsModule,
+        FsDatePickerModule.forRoot(),
+        FsExampleModule.forRoot(),
+        FsMessageModule.forRoot(),
+        ToastrModule.forRoot({ preventDuplicates: true }),
+    ],
+    declarations: [
+        AppComponent,
+        SelectComponent,
+        AutocompleteComponent,
+        InputComponent,
+        ConfirmComponent,
+        DateComponent,
+        DateTimeComponent,
+        AutocompleteChipsComponent,
+    ]
 })
 export class PlaygroundModule {
 }

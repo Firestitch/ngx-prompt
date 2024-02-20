@@ -12,21 +12,16 @@ import { FsDialogModule } from '@firestitch/dialog';
 import { FsPromptAutocompleteChipsComponent } from './prompt-autocomplete-chips.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-
-    MatDialogModule,
-    MatButtonModule,
-
-    FsAutocompleteChipsModule,
-    FsDialogModule
-  ],
-  entryComponents: [
-    FsPromptAutocompleteChipsComponent,
-  ],
-  declarations: [
-    FsPromptAutocompleteChipsComponent,
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        MatDialogModule,
+        MatButtonModule,
+        FsAutocompleteChipsModule,
+        FsDialogModule
+    ],
+    declarations: [
+        FsPromptAutocompleteChipsComponent,
+    ]
 })
 export class FsPromptAutocompleteChipsModule {}

@@ -14,23 +14,18 @@ import { FsPromptInputComponent } from './prompt-input.component';
 
 
 @NgModule({
-  imports: [
-    // Angular
-    CommonModule,
-    ReactiveFormsModule,
-
-    // Material
-    MatDialogModule,
-    MatButtonModule,
-    MatInputModule,
-
-    FsDialogModule
-  ],
-  entryComponents: [
-    FsPromptInputComponent,
-  ],
-  declarations: [
-    FsPromptInputComponent,
-  ],
+    imports: [
+        // Angular
+        CommonModule,
+        ReactiveFormsModule,
+        // Material
+        MatDialogModule,
+        MatButtonModule,
+        MatInputModule,
+        FsDialogModule
+    ],
+    declarations: [
+        FsPromptInputComponent,
+    ]
 })
 export class FsPromptInputModule {}

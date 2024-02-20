@@ -11,21 +11,16 @@ import { FsDialogModule } from '@firestitch/dialog';
 import { FsPromptConfirmComponent } from './prompt-confirm.component';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-
-    MatDialogModule,
-    MatButtonModule,
-    FsCommonModule,
-
-    FsDialogModule,
-  ],
-  entryComponents: [
-    FsPromptConfirmComponent,
-  ],
-  declarations: [
-    FsPromptConfirmComponent,
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        MatDialogModule,
+        MatButtonModule,
+        FsCommonModule,
+        FsDialogModule,
+    ],
+    declarations: [
+        FsPromptConfirmComponent,
+    ]
 })
 export class FsPromptConfirmModule { }
