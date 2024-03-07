@@ -3,8 +3,13 @@
   <mat-dialog-content tabindex="-1">
     {{data.template}}
     <mat-form-field>
-      <input matInput fsDatePicker [placeholder]="data.label" [formControl]="input" name="input" [view]="promptType">
-
+      <mat-label>{{data.label}}</mat-label>
+      <input 
+        matInput 
+        fsDatePicker 
+        [formControl]="input" 
+        name="input" 
+        [view]="promptType">
       <mat-hint>
         <ng-container *ngIf="input.valid || !input.dirty; else invalidMessage">
           {{data.hint}}

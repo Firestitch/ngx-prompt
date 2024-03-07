@@ -4,11 +4,20 @@
     <mat-dialog-content tabindex="-1">
       {{config.template}}
       <mat-form-field>
+        <mat-label>{{config.label}}</mat-label>
         <ng-container *ngIf="config.multiline">
-          <textarea matInput [placeholder]="config.label" cdkTextareaAutosize formControlName="input" name="input"></textarea>
+          <textarea 
+            matInput 
+            cdkTextareaAutosize 
+            formControlName="input" 
+            name="input">
+          </textarea>
         </ng-container>
         <ng-container *ngIf="!config.multiline">
-          <input matInput [placeholder]="config.label" formControlName="input" name="input">
+          <input 
+            matInput 
+            formControlName="input" 
+            name="input">
         </ng-container>
         <mat-hint>
           <ng-container *ngIf="inputControl.valid || !inputControl.dirty; else invalidMessage">
