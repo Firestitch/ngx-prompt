@@ -10,14 +10,13 @@
           [(ngModel)]="result"
           [placeholder]="data.label"
           (ngModelChange)="change()"
-          [required]="true"
+          [required]="config.required"
           name="result">
         <ng-template fsAutocompleteTemplate let-data="data">
           {{ data.name }}
         </ng-template>
       </fs-autocomplete>
     </mat-dialog-content>
-
     <mat-dialog-actions>
       <ng-container *ngIf="!config.commitOnSelect">
         <button 
