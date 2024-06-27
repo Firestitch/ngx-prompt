@@ -1,18 +1,21 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
 import { IFsPromptInputConfig } from '../../interfaces';
 
 @Component({
-  templateUrl: 'prompt-input.component.html',
-  styleUrls: [ '../../prompt.css' ],
+  templateUrl: './prompt-input.component.html',
+  styleUrls: ['../../prompt.css'],
   styles: [
     `
       .form-error {
         color: #f44336;
       }
-    `
-  ]
+    `,
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FsPromptInputComponent implements OnInit {
 

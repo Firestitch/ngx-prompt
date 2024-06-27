@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { FsPrompt } from '@firestitch/prompt';
 
@@ -8,6 +8,7 @@ import { of } from 'rxjs';
   selector: 'autocomplete-example',
   styleUrls: ['./autocomplete.component.scss'],
   templateUrl: './autocomplete.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AutocompleteComponent {
 

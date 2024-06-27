@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 import { FsPrompt } from '@firestitch/prompt';
 
 
 @Component({
   selector: 'date-example',
-  templateUrl: 'date.component.html'
+  templateUrl: './date.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DateComponent {
 

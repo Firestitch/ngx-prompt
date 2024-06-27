@@ -1,17 +1,18 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { FormControl, Validators } from '@angular/forms';
 
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
 @Component({
-  templateUrl: 'prompt-date.component.html',
-  styleUrls: [ '../../prompt.css' ],
+  templateUrl: './prompt-date.component.html',
+  styleUrls: ['../../prompt.css'],
   styles: [
     `
       .form-error {
         color: #f44336;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class FsPromptDateComponent implements OnInit {
 

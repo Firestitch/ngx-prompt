@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 import { FsPrompt } from '@firestitch/prompt';
 
 
 @Component({
   selector: 'input-example',
-  templateUrl: 'input.component.html'
+  templateUrl: './input.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class InputComponent {
 
@@ -20,6 +22,7 @@ export class InputComponent {
       commitLabel: 'Create',
       required: true,
       default: 'Default Value',
+      suffix: 'unit',
       multiline,
     }).subscribe((value: string | boolean) => {
       if (value !== false) {

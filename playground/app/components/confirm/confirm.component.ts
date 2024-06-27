@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
+
 import { FsPrompt } from '@firestitch/prompt';
 
 
 @Component({
   selector: 'confirm-example',
-  templateUrl: 'confirm.component.html'
+  templateUrl: './confirm.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ConfirmComponent {
 
@@ -33,14 +35,14 @@ export class ConfirmComponent {
           label: 'Continue',
           color: 'primary',
           class: 'continue',
-          value: 'Continue'
+          value: 'Continue',
         },
         {
           label: 'Cancel',
           cancel: true,
-          class: 'cancel'
-        }
-      ]
+          class: 'cancel',
+        },
+      ],
     }).subscribe((value) => {
       this.confirmValue = value;
     }, (error: any) => {

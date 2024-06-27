@@ -44,6 +44,7 @@ export interface IFsPromptDateTimeConfig extends IFsPromptConfig {
 
 export interface IFsPromptInputConfig extends IFsPromptConfig {
   multiline?: boolean;
+  suffix?: string;
 }
 
 export interface IFsPromptButtonConfig {

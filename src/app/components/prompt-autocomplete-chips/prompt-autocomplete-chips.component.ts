@@ -1,14 +1,16 @@
-import { Component, Inject, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
-import { IFsPromptAutocompleteChipsConfig, IFsPromptConfig } from '../../interfaces';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+
+import { IFsPromptAutocompleteChipsConfig } from '../../interfaces';
 
 
 @Component({
   selector: 'fs-prompt-autocomplete-chips',
-  templateUrl: 'prompt-autocomplete-chips.component.html',
-  styleUrls: [ '../../prompt.css', 'prompt-autocomplete-chips.component.scss' ],
+  templateUrl: './prompt-autocomplete-chips.component.html',
+  styleUrls: ['../../prompt.css', './prompt-autocomplete-chips.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FsPromptAutocompleteChipsComponent {
   
@@ -45,9 +47,9 @@ export class FsPromptAutocompleteChipsComponent {
 
   public complete() {
     const model = this.model
-    .map((item) => {
-      return this.config.allowText ? item : item.value;
-    });
+      .map((item) => {
+        return this.config.allowText ? item : item.value;
+      });
 
     this._dialogRef.close(model);
   }
