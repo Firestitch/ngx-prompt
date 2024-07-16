@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-import { Observable } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
 
+import { takeUntil, tap } from 'rxjs/operators';
 import { IFsPromptAutocompleteConfig } from '../../interfaces';
 
 
@@ -17,7 +18,7 @@ import { IFsPromptAutocompleteConfig } from '../../interfaces';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FsPromptAutocompleteComponent {
+export class FsPromptAutocompleteComponent implements OnDestroy {
 
   public inputControl = new FormControl('', []);
   public filteredItems: Observable<any[]>;
@@ -27,6 +28,8 @@ export class FsPromptAutocompleteComponent {
   public error = false;
   public model;
   public config: IFsPromptAutocompleteConfig = {};
+
+  private _destroy$ = new Subject();
 
   constructor(
     public dialogRef: MatDialogRef<FsPromptAutocompleteComponent>,
@@ -39,17 +42,31 @@ export class FsPromptAutocompleteComponent {
     };
   }
 
+  public ngOnDestroy(): void {
+    this._destroy$.next();
+    this._destroy$.complete();
+  }
+
   public fetch = (name: string) => {
     return this.data.values(name);
   };
 
-  public select() {
-    this.dialogRef.close(this.result.value);
-  }
+  public select = () => {
+    return of(true)
+      .pipe(
+        tap(() => {
+          this.dialogRef.close(this.result.value);
+        }),
+      );
+  };
 
   public change() {
-    if(this.config.commitOnSelect) {
-      this.select();
+    if (this.config.commitOnSelect) {
+      this.select()
+        .pipe(
+          takeUntil(this._destroy$),
+        )
+        .subscribe();
     }
   }
 

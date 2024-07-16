@@ -18,6 +18,8 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
+import { RouterModule } from '@angular/router';
+import { FsFormModule } from '@firestitch/form';
 import { AppComponent } from './app.component';
 import {
   AutocompleteChipsComponent,
@@ -32,33 +34,35 @@ import { AppMaterialModule } from './material.module';
 
 
 @NgModule({
-    bootstrap: [AppComponent],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppMaterialModule,
-        FormsModule,
-        FsPromptInputModule,
-        FsPromptSelectModule,
-        FsPromptDateModule,
-        FsPromptAutocompleteModule,
-        FsPromptConfirmModule,
-        FsPromptAutocompleteChipsModule,
-        FsDatePickerModule.forRoot(),
-        FsExampleModule.forRoot(),
-        FsMessageModule.forRoot(),
-        ToastrModule.forRoot({ preventDuplicates: true }),
-    ],
-    declarations: [
-        AppComponent,
-        SelectComponent,
-        AutocompleteComponent,
-        InputComponent,
-        ConfirmComponent,
-        DateComponent,
-        DateTimeComponent,
-        AutocompleteChipsComponent,
-    ]
+  bootstrap: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppMaterialModule,
+    FormsModule,
+    FsPromptInputModule,
+    FsPromptSelectModule,
+    FsPromptDateModule,
+    FsPromptAutocompleteModule,
+    FsPromptConfirmModule,
+    FsPromptAutocompleteChipsModule,
+    FsDatePickerModule.forRoot(),
+    FsExampleModule.forRoot(),
+    FsMessageModule.forRoot(),
+    FsFormModule.forRoot(),
+    RouterModule.forRoot([]),
+    ToastrModule.forRoot({ preventDuplicates: true }),
+  ],
+  declarations: [
+    AppComponent,
+    SelectComponent,
+    AutocompleteComponent,
+    InputComponent,
+    ConfirmComponent,
+    DateComponent,
+    DateTimeComponent,
+    AutocompleteChipsComponent,
+  ]
 })
 export class PlaygroundModule {
 }

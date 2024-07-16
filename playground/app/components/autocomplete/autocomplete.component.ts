@@ -16,7 +16,7 @@ export class AutocompleteComponent {
 
   constructor(
     private _prompt: FsPrompt,
-  ) {}
+  ) { }
 
   public openAutocomplete() {
 
@@ -25,7 +25,7 @@ export class AutocompleteComponent {
       title: 'Auto Complete Prompt',
       values: (keyword) => {
         return of([
-          { name: 'Bob', value:  { id: 1, name: 'Bob' } },
+          { name: 'Bob', value: { id: 1, name: 'Bob' } },
           { name: 'Ryan', value: { id: 2, name: 'Ryan' } },
           { name: 'Jim', value: { id: 3, name: 'Jim' } },
         ].filter((item) => {
