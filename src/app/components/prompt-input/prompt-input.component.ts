@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
@@ -21,8 +21,8 @@ export class FsPromptInputComponent implements OnInit {
 
   public config: IFsPromptInputConfig;
 
-  public promptInputForm = new FormGroup({
-    input: new FormControl(''),
+  public promptInputForm = new UntypedFormGroup({
+    input: new UntypedFormControl(''),
   });
 
   constructor(

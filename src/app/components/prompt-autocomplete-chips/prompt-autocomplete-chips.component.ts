@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject, ViewChild } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
@@ -21,8 +21,8 @@ export class FsPromptAutocompleteChipsComponent {
   public config: IFsPromptAutocompleteChipsConfig = {
     default: [],
   };
-  public promptInputForm = new FormGroup({
-    input: new FormControl(''),
+  public promptInputForm = new UntypedFormGroup({
+    input: new UntypedFormControl(''),
   });
 
   constructor(

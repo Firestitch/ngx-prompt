@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Inject, OnDestroy } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
@@ -20,7 +20,7 @@ import { IFsPromptAutocompleteConfig } from '../../interfaces';
 })
 export class FsPromptAutocompleteComponent implements OnDestroy {
 
-  public inputControl = new FormControl('', []);
+  public inputControl = new UntypedFormControl('', []);
   public filteredItems: Observable<any[]>;
   public result;
   public loading = false;
