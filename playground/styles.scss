@@ -1,15 +1,9 @@
-@use 'palette';
-// @use '@angular/material' as mat;
-@use '~@firestitch/style/variables' with (
-  $palette: palette.$primary-palette
-);
-@use '~@firestitch/style/styles' as fs-style;
+@use '@angular/material' as mat;
+@use "@firestitch/style/styles" as fs-style;
+@import '@firestitch/component-tools/assets/playground.scss';
+@import "@firestitch/message/styles";
+@import "@firestitch/form/styles";
+@import '../src/app/styles';
 
-@import "~@firestitch/component-tools/assets/playground.scss";
-
-@import "~@firestitch/message/styles.scss";
-@import "~@firestitch/dialog/styles.scss";
-@import "~@firestitch/datepicker/styles.scss";
-@import "../src/app/styles";
-
+@include fs-form($app-theme);
 @include fs-style.core();
