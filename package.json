@@ -1,7 +1,7 @@
 {
   "name": "@firestitch/prompt",
   "title": "Prompt",
-  "version": "14.0.0",
+  "version": "14.0.1",
   "repository": {
     "type": "git",
     "url": "https://github.com/Firestitch/ngx-prompt"
@@ -46,7 +46,7 @@
     "@firestitch/autocomplete": "^13.0.4",
     "@firestitch/autocomplete-chips": "^13.0.1",
     "@firestitch/clear": "^12.4.0",
-    "@firestitch/common": "^13.0.1",
+    "@firestitch/common": "^13.0.4",
     "@firestitch/component-tools": "^14.0.0",
     "@firestitch/core": "^13.0.0",
     "@firestitch/date": "^13.0.0",
