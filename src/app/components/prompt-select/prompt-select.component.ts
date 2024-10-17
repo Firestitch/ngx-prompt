@@ -15,7 +15,7 @@ import { IFsPromptSelectConfig } from '../../interfaces';
 
 @Component({
   templateUrl: './prompt-select.component.html',
-  styleUrls: ['../../prompt.css'],
+  styleUrls: ['../../prompt.css', './prompt-select.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FsPromptSelectComponent implements OnInit {

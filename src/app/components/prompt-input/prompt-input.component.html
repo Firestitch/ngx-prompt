@@ -22,14 +22,12 @@
         <div matSuffix *ngIf="config.suffix">
           {{config.suffix}}
         </div>
-        <mat-hint>
+        <mat-hint [ngClass]="{ 'form-error': inputControl.invalid && inputControl.dirty }">
           <ng-container *ngIf="inputControl.valid || !inputControl.dirty; else invalidMessage">
             {{config.hint}}
           </ng-container>
           <ng-template #invalidMessage>
-            <div class="form-error">
               This field is required
-            </div>
           </ng-template>
         </mat-hint>
       </mat-form-field>

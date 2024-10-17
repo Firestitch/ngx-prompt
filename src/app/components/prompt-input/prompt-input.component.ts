@@ -7,14 +7,7 @@ import { IFsPromptInputConfig } from '../../interfaces';
 
 @Component({
   templateUrl: './prompt-input.component.html',
-  styleUrls: ['../../prompt.css'],
-  styles: [
-    `
-      .form-error {
-        color: #f44336;
-      }
-    `,
-  ],
+  styleUrls: ['../../prompt.css', './prompt-input.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FsPromptInputComponent implements OnInit {
