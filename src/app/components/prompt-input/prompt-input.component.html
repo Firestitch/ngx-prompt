@@ -1,6 +1,6 @@
 <fs-dialog mobileMode="float">
   <form [formGroup]="promptInputForm">
-    <h2 mat-dialog-title *ngIf="config.title">{{config.title}}</h2>
+    <h1 mat-dialog-title *ngIf="config.title">{{config.title}}</h1>
     <mat-dialog-content tabindex="-1">
       {{config.template}}
       <mat-form-field>
