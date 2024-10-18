@@ -2,21 +2,23 @@
   <fs-dialog mobileMode="float">
     <h1 mat-dialog-title>{{data.title}}</h1>
     <mat-dialog-content tabindex="-1">
-      {{data.template}}
-      <mat-form-field *ngIf="!error">
-        <mat-label>{{data.label}}</mat-label>
-        <mat-select
-            [required]="true"
-            [(ngModel)]="result" 
-            (ngModelChange)="change()"
-            name="select">
-          <mat-option *ngFor="let item of items" [value]="item.value">
-            {{ item.name }}
-          </mat-option>
-        </mat-select>
-        <mat-hint>{{data.hint}}</mat-hint>
-      </mat-form-field>
-      <ng-container *ngIf="error">Something went wrong. Please, try again</ng-container>
+      <div class="fs-column">
+        {{data.template}}
+        <mat-form-field *ngIf="!error">
+          <mat-label>{{data.label}}</mat-label>
+          <mat-select
+              [required]="true"
+              [(ngModel)]="result" 
+              (ngModelChange)="change()"
+              name="select">
+            <mat-option *ngFor="let item of items" [value]="item.value">
+              {{ item.name }}
+            </mat-option>
+          </mat-select>
+          <mat-hint>{{data.hint}}</mat-hint>
+        </mat-form-field>
+        <ng-container *ngIf="error">Something went wrong. Please, try again</ng-container>
+      </div>
     </mat-dialog-content>
 
     <mat-dialog-actions>

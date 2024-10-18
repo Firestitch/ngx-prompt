@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 import { FsDatePickerModule } from '@firestitch/datepicker';
 import { FsExampleModule } from '@firestitch/example';
+import { FsFormModule } from '@firestitch/form';
 import { FsMessageModule } from '@firestitch/message';
 import {
   FsPromptAutocompleteChipsModule,
@@ -18,8 +21,7 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
-import { RouterModule } from '@angular/router';
-import { FsFormModule } from '@firestitch/form';
+
 import { AppComponent } from './app.component';
 import {
   AutocompleteChipsComponent,
@@ -62,7 +64,13 @@ import { AppMaterialModule } from './material.module';
     DateComponent,
     DateTimeComponent,
     AutocompleteChipsComponent,
-  ]
+  ],
+  providers: [
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { floatLabel: 'auto', appearance: 'outline' },
+    },
+  ],
 })
 export class PlaygroundModule {
 }

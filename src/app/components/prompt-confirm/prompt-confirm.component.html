@@ -1,7 +1,9 @@
 <fs-dialog mobileMode="float">
   <h1 mat-dialog-title>{{data.title}}</h1>
   <mat-dialog-content>
-    <span [innerHtml]="template"></span>
+    <div class="fs-column">
+      <span [innerHtml]="template"></span>
+    </div>
   </mat-dialog-content>
 
   <mat-dialog-actions>

@@ -2,35 +2,37 @@
   <form [formGroup]="promptInputForm">
     <h1 mat-dialog-title *ngIf="config.title">{{config.title}}</h1>
     <mat-dialog-content tabindex="-1">
-      {{config.template}}
-      <mat-form-field>
-        <mat-label>{{config.label}}</mat-label>
-        <ng-container *ngIf="config.multiline">
-          <textarea 
-            matInput 
-            cdkTextareaAutosize 
-            formControlName="input" 
-            name="input">
-          </textarea>
-        </ng-container>
-        <ng-container *ngIf="!config.multiline">
-          <input 
-            matInput 
-            formControlName="input" 
-            name="input">
-        </ng-container>
-        <div matSuffix *ngIf="config.suffix">
-          {{config.suffix}}
-        </div>
-        <mat-hint [ngClass]="{ 'form-error': inputControl.invalid && inputControl.dirty }">
-          <ng-container *ngIf="inputControl.valid || !inputControl.dirty; else invalidMessage">
-            {{config.hint}}
+      <div class="fs-column">
+        {{config.template}}
+        <mat-form-field>
+          <mat-label>{{config.label}}</mat-label>
+          <ng-container *ngIf="config.multiline">
+            <textarea 
+              matInput 
+              cdkTextareaAutosize 
+              formControlName="input" 
+              name="input">
+            </textarea>
           </ng-container>
-          <ng-template #invalidMessage>
-              This field is required
-          </ng-template>
-        </mat-hint>
-      </mat-form-field>
+          <ng-container *ngIf="!config.multiline">
+            <input 
+              matInput 
+              formControlName="input" 
+              name="input">
+          </ng-container>
+          <div matSuffix *ngIf="config.suffix">
+            {{config.suffix}}
+          </div>
+          <mat-hint [ngClass]="{ 'form-error': inputControl.invalid && inputControl.dirty }">
+            <ng-container *ngIf="inputControl.valid || !inputControl.dirty; else invalidMessage">
+              {{config.hint}}
+            </ng-container>
+            <ng-template #invalidMessage>
+                This field is required
+            </ng-template>
+          </mat-hint>
+        </mat-form-field>
+      </div>
     </mat-dialog-content>
 
     <mat-dialog-actions>

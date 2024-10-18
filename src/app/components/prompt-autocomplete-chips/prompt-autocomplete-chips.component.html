@@ -1,23 +1,25 @@
 <fs-dialog mobileMode="float">
   <h1 mat-dialog-title>{{data.title}}</h1>
   <mat-dialog-content tabindex="-1">
-    {{data.template}}
-    <fs-autocomplete-chips
-        #autocomplete
-        [fetch]="fetch"
-        [placeholder]="config.label"
-        [fetchOnFocus]="true"
-        [(ngModel)]="model"
-        [allowText]="config.allowText"
-        [allowObject]="!config.allowText"
-        [validateText]="validateText"
-        [required]="true"
-        [multiple]="true"
-        name="model">
-      <ng-template fsAutocompleteChipsTemplate let-object="object">
-        {{ object.name }}
-    </ng-template>
-  </fs-autocomplete-chips>
+    <div class="fs-column">
+      {{data.template}}
+      <fs-autocomplete-chips
+          #autocomplete
+          [fetch]="fetch"
+          [placeholder]="config.label"
+          [fetchOnFocus]="true"
+          [(ngModel)]="model"
+          [allowText]="config.allowText"
+          [allowObject]="!config.allowText"
+          [validateText]="validateText"
+          [required]="true"
+          [multiple]="true"
+          name="model">
+        <ng-template fsAutocompleteChipsTemplate let-object="object">
+          {{ object.name }}
+      </ng-template>
+    </fs-autocomplete-chips>
+  </div>
   </mat-dialog-content>
   <mat-dialog-actions>
     <button mat-button
