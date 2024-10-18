@@ -52,7 +52,7 @@
     "@firestitch/core": "^18.0.1",
     "@firestitch/date": "^18.0.1",
     "@firestitch/datepicker": "^18.0.2",
-    "@firestitch/dialog": "^18.0.3",
+    "@firestitch/dialog": "^18.0.4",
     "@firestitch/drawer": "^18.0.0",
     "@firestitch/example": "^18.0.4",
     "@firestitch/file": "^18.0.2",
