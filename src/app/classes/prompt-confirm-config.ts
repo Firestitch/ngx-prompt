@@ -37,8 +37,8 @@ export class FsPromptConfirmConfig<T> extends FsPromptConfig<T> {
     super.applyDialogConfig(config);
     const inputDialogConfig = config.dialogConfig;
     // Confrim has small width by default than other types
-    if (!inputDialogConfig || inputDialogConfig.width === void 0) {
-      this._dialogConfig.width = '250px';
+    if (!inputDialogConfig || inputDialogConfig.width === undefined) {
+      this._dialogConfig.width = '350px';
     }
   }
 }
