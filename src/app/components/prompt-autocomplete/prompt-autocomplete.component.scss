@@ -1,5 +1,10 @@
-:host ::ng-deep mat-form-field {
-  width: 100%;
+:host {
+  fs-autocomplete {
+    width: 100%;
+  }
+  ::ng-deep mat-form-field {
+    width: 100%;
+  }
 }
 
 .mat-dialog-content {
