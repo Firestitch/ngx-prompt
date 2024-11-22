@@ -6,7 +6,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable, of, Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
-import { FsPromptAutocompleteConfig } from 'src/app/classes';
+import { FsPromptAutocompleteConfig } from '../../classes';
 
 
 @Component({
