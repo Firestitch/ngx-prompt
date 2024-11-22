@@ -29,6 +29,7 @@ import {
   ConfirmComponent,
   DateComponent,
   DateTimeComponent,
+  DeleteComponent,
   InputComponent,
   SelectComponent,
 } from './components';
@@ -64,6 +65,7 @@ import { AppMaterialModule } from './material.module';
     DateComponent,
     DateTimeComponent,
     AutocompleteChipsComponent,
+    DeleteComponent,
   ],
   providers: [
     {

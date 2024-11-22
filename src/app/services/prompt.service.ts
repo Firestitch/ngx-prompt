@@ -15,7 +15,7 @@ import { FsPromptInputComponent } from '../components/prompt-input/prompt-input.
 import { FsPromptSelectComponent } from '../components/prompt-select/prompt-select.component';
 import { PromptType } from '../helpers/enums';
 import {
-  IFsPromptAutocompleteChipsConfig, IFsPromptAutocompleteConfig, IFsPromptConfig, IFsPromptDateConfig, IFsPromptDateTimeConfig, IFsPromptInputConfig,
+  IFsPromptAutocompleteChipsConfig, IFsPromptAutocompleteConfig, IFsPromptConfig, IFsPromptDateConfig, IFsPromptDateTimeConfig, IFsPromptDeleteConfig, IFsPromptInputConfig,
   IFsPromptSelectConfig,
 } from '../interfaces';
 
@@ -35,6 +35,33 @@ export class FsPrompt {
    * Open confirmation window and return close observable
    */
   public confirm(config: IFsPromptConfig = {}) {
+    const openConfig = new FsPromptConfirmConfig(config, PromptType.confirm);
+
+    return this._open(openConfig);
+  }
+
+  /**
+   * Open confirmation window and return close observable
+   */
+  public delete(config: IFsPromptDeleteConfig = {}) {
+    const objectType = config.objectType || 'item';
+
+    config = {
+      title: `Delete ${objectType}`,
+      template: `Are you sure you want to delete this ${objectType}?`,
+      buttons: [
+        {
+          label: 'Delete',
+          color: 'primary',
+        },
+        {
+          label: 'Cancel',
+          cancel: true,
+        },
+      ],
+      ...config,
+    };
+
     const openConfig = new FsPromptConfirmConfig(config, PromptType.confirm);
 
     return this._open(openConfig);

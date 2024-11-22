@@ -35,6 +35,10 @@ export interface IFsPromptSelectConfig extends IFsPromptConfig {
   commitOnSelect?: boolean;
 }
 
+export interface IFsPromptDeleteConfig extends IFsPromptConfig {
+  objectType?: string;
+}
+
 export interface IFsPromptDateConfig extends IFsPromptConfig {
 }
 
