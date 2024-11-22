@@ -2,6 +2,7 @@ import { MatDialogConfig } from '@angular/material/dialog';
 
 import { Observable } from 'rxjs';
 
+
 export interface IFsPromptConfig {
   title?: string;
   template?: string;
@@ -12,27 +13,31 @@ export interface IFsPromptConfig {
   cancelLabel?: string;
   commitShow?: boolean;
   cancelShow?: boolean;
-  values?(keyword): Observable<{ name; value }[]>;
   dialogConfig?: MatDialogConfig;
   buttons?: IFsPromptButtonConfig[];
-  required?: boolean;
   autofocus?: boolean;
   default?: any;
   escape?: boolean | undefined;
 }
 
 export interface IFsPromptAutocompleteChipsConfig extends IFsPromptConfig {
+  required?: boolean;
   allowText?: boolean;
   validateText?: (text?: string) => boolean;
+  values?(keyword): Observable<{ name; value }[]>;
 }
 
 export interface IFsPromptAutocompleteConfig extends IFsPromptConfig {
   commitOnSelect?: boolean;
+  required?: boolean;
   fetchOnFocus?: boolean;
+  values?(keyword): Observable<{ name; value }[]>;
 }
 
 export interface IFsPromptSelectConfig extends IFsPromptConfig {
   commitOnSelect?: boolean;
+  required?: boolean;
+  values?(keyword): Observable<{ name; value }[]>;
 }
 
 export interface IFsPromptDeleteConfig extends IFsPromptConfig {
@@ -40,15 +45,17 @@ export interface IFsPromptDeleteConfig extends IFsPromptConfig {
 }
 
 export interface IFsPromptDateConfig extends IFsPromptConfig {
+  required?: boolean;
 }
 
 export interface IFsPromptDateTimeConfig extends IFsPromptConfig {
-
+  required?: boolean;
 }
 
 export interface IFsPromptInputConfig extends IFsPromptConfig {
   multiline?: boolean;
   suffix?: string;
+  required?: boolean;
 }
 
 export interface IFsPromptButtonConfig {

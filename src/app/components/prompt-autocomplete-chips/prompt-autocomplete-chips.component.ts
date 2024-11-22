@@ -3,7 +3,7 @@ import { UntypedFormControl, UntypedFormGroup } from '@angular/forms';
 
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
-import { IFsPromptAutocompleteChipsConfig } from '../../interfaces';
+import { FsPromptAutocompleteChipsConfig } from '../../classes';
 
 
 @Component({
@@ -18,27 +18,20 @@ export class FsPromptAutocompleteChipsComponent {
   public autocomplete: FsPromptAutocompleteChipsComponent;
 
   public model;
-  public config: IFsPromptAutocompleteChipsConfig = {
-    default: [],
-  };
+
   public promptInputForm = new UntypedFormGroup({
     input: new UntypedFormControl(''),
   });
 
   constructor(
     private _dialogRef: MatDialogRef<FsPromptAutocompleteChipsComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public config: FsPromptAutocompleteChipsConfig<any>,
   ) {    
-    this.config = {
-      ...this.config,
-      ...data.config,
-    };
-
     this.model = this.config.default;
   }
 
-  public fetch = (name: string) => {
-    return this.data.values(name);
+  public fetch = (keyword: string) => {
+    return this.config.values(keyword);
   };
 
   public validateText = (name: string) => {

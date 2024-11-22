@@ -6,7 +6,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Observable, of, Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
-import { IFsPromptAutocompleteConfig } from '../../interfaces';
+import { FsPromptAutocompleteConfig } from 'src/app/classes';
 
 
 @Component({
@@ -27,19 +27,13 @@ export class FsPromptAutocompleteComponent implements OnDestroy {
   public items = [];
   public error = false;
   public model;
-  public config: IFsPromptAutocompleteConfig = {};
 
   private _destroy$ = new Subject();
 
   constructor(
     public dialogRef: MatDialogRef<FsPromptAutocompleteComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public config: FsPromptAutocompleteConfig<any>,
   ) {
-    this.config = {
-      fetchOnFocus: true,
-      ...this.config,
-      ...data.config,
-    };
   }
 
   public ngOnDestroy(): void {
@@ -48,7 +42,7 @@ export class FsPromptAutocompleteComponent implements OnDestroy {
   }
 
   public fetch = (name: string) => {
-    return this.data.values(name);
+    return this.config.values(name);
   };
 
   public select = () => {

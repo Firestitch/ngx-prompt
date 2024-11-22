@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { of, throwError } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-import { FsPromptConfig, FsPromptConfirmConfig } from '../classes';
+import { FsPromptAutocompleteChipsConfig, FsPromptAutocompleteConfig, FsPromptConfig, FsPromptConfirmConfig } from '../classes';
 import { FsPromptAutocompleteChipsComponent } from '../components/prompt-autocomplete-chips/prompt-autocomplete-chips.component';
 import { FsPromptAutocompleteComponent } from '../components/prompt-autocomplete/prompt-autocomplete.component';
 import { FsPromptConfirmComponent } from '../components/prompt-confirm/prompt-confirm.component';
@@ -15,7 +15,8 @@ import { FsPromptInputComponent } from '../components/prompt-input/prompt-input.
 import { FsPromptSelectComponent } from '../components/prompt-select/prompt-select.component';
 import { PromptType } from '../helpers/enums';
 import {
-  IFsPromptAutocompleteChipsConfig, IFsPromptAutocompleteConfig, IFsPromptConfig, IFsPromptDateConfig, IFsPromptDateTimeConfig, IFsPromptDeleteConfig, IFsPromptInputConfig,
+  IFsPromptAutocompleteChipsConfig, IFsPromptAutocompleteConfig, IFsPromptConfig,
+  IFsPromptDateConfig, IFsPromptDateTimeConfig, IFsPromptDeleteConfig, IFsPromptInputConfig,
   IFsPromptSelectConfig,
 } from '../interfaces';
 
@@ -89,18 +90,14 @@ export class FsPrompt {
    * Open modal with autocomplete
    */
   public autocomplete(config: IFsPromptAutocompleteConfig = {}) {
-    const openConfig = new FsPromptConfig(config, PromptType.autocomplete);
-
-    return this._open(openConfig);
+    return this._open(new FsPromptAutocompleteConfig(config));
   }
 
   /**
    * Open modal with autocomplete chips
    */
   public autocompleteChips(config: IFsPromptAutocompleteChipsConfig = {}) {
-    const openConfig = new FsPromptConfig(config, PromptType.autocompleteChips);
-
-    return this._open(openConfig);
+    return this._open(new FsPromptAutocompleteChipsConfig(config));
   }
 
   /**
@@ -126,7 +123,12 @@ export class FsPrompt {
   /**
    * Open modal dialog depends from type
    */
-  private _open(config: FsPromptConfig<any> | FsPromptConfirmConfig<any>) {
+  private _open(config: (
+    FsPromptConfig<any> | 
+    FsPromptConfirmConfig<any> | 
+    FsPromptAutocompleteChipsConfig<any> |
+    FsPromptAutocompleteConfig<any>
+  )) {
     // Default classes for modal
     config.addDefaultPanelClasses(config.type);
 

@@ -4,8 +4,8 @@ import { FsPromptConfig } from './prompt-config';
 
 export class FsPromptConfirmConfig<T> extends FsPromptConfig<T> {
 
-  protected applyConfig(config) {
-    super.applyConfig(config);
+  protected _applyConfig(config) {
+    super._applyConfig(config);
 
     if (!config.title) {
       config.title = 'Confirm';
@@ -33,8 +33,8 @@ export class FsPromptConfirmConfig<T> extends FsPromptConfig<T> {
     }
   }
 
-  protected applyDialogConfig(config: IFsPromptConfig) {
-    super.applyDialogConfig(config);
+  protected _applyDialogConfig(config: IFsPromptConfig) {
+    super._applyDialogConfig(config);
     const inputDialogConfig = config.dialogConfig;
     // Confrim has small width by default than other types
     if (!inputDialogConfig || inputDialogConfig.width === undefined) {

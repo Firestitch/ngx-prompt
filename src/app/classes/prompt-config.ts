@@ -1,9 +1,8 @@
 import { MatDialogConfig } from '@angular/material/dialog';
 
-import { Observable } from 'rxjs';
 
 import { PromptType } from '../helpers/enums';
-import { FsValuesFunction, IFsPromptConfig } from '../interfaces';
+import { IFsPromptConfig } from '../interfaces';
 
 
 export class FsPromptConfig<T> {
@@ -23,8 +22,6 @@ export class FsPromptConfig<T> {
   public type: PromptType;
   public buttons = [];
 
-  public values: Observable<T> | Promise<T> | T[] | FsValuesFunction = [];
-
   protected _dialogConfig: MatDialogConfig;
   protected _defaultDialogConfig = {
     width: '500px',
@@ -36,8 +33,8 @@ export class FsPromptConfig<T> {
     public promptType: PromptType,
   ) {
     this.type = promptType;
-    this.applyConfig(config);
-    this.applyDialogConfig(config);
+    this._applyConfig(config);
+    this._applyDialogConfig(config);
   }
 
   public get dialogConfig() {
@@ -68,11 +65,11 @@ export class FsPromptConfig<T> {
     this._dialogConfig.panelClass.push('fs-prompt', `fs-prompt-${type}`);
   }
 
-  protected applyConfig(config: IFsPromptConfig) {
+  protected _applyConfig(config: IFsPromptConfig) {
     Object.assign(this, config);
   }
 
-  protected applyDialogConfig(config: IFsPromptConfig) {
+  protected _applyDialogConfig(config: IFsPromptConfig) {
     const inputDialogConfig = config.dialogConfig;
 
     // Previously let's assign default config
