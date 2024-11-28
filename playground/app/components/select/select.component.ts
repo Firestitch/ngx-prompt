@@ -13,7 +13,7 @@ export class SelectComponent {
 
   public selectValue = false;
 
-  constructor(private _prompt: FsPrompt) {}
+  constructor(private _prompt: FsPrompt) { }
 
   public openSelect() {
     const testObservable = new Subject<any>();

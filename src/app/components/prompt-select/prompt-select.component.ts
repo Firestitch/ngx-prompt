@@ -8,6 +8,8 @@ import {
 
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
+import { of } from 'rxjs';
+
 import { ConverterType } from '../../helpers/enums';
 import { valuesConverter } from '../../helpers/values-converter';
 import { IFsPromptSelectConfig } from '../../interfaces';
@@ -42,16 +44,18 @@ export class FsPromptSelectComponent implements OnInit {
   }
 
   public change() {
-    if(this.config.commitOnSelect) {
+    if (this.config.commitOnSelect) {
       this.select();
     }
   }
 
-  public select() {
-    if(this.result) {
+  public select = () => {
+    if (this.result) {
       this.dialogRef.close(this.result);
     }
-  }
+
+    return of(true);
+  };
 
   private _loadItems() {
     const result = valuesConverter(this.data.values);
