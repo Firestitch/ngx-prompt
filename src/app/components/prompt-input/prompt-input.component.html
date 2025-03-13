@@ -28,7 +28,13 @@
               {{config.hint}}
             </ng-container>
             <ng-template #invalidMessage>
+              @if (inputControl.errors?.required) {
                 This field is required
+              } @else if (inputControl.errors?.min) {
+                Value should not be less than {{ inputControl.errors.min.min }}
+              } @else if (inputControl.errors?.max) {
+                Value should not be greater than {{ inputControl.errors.max.max }}
+              }
             </ng-template>
           </mat-hint>
         </mat-form-field>

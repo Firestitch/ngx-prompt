@@ -42,7 +42,16 @@ export class FsPromptInputComponent implements OnInit {
     this.inputControl.setValue(this._data.default);
 
     if (this._data.required) {
-      this.inputControl.setValidators(Validators.required);
+      this.inputControl.addValidators(Validators.required);
+    }
+
+
+    if (this._data.min != undefined) {
+      this.inputControl.addValidators(Validators.min(this._data.min));
+    }
+
+    if (this._data.max != undefined) {
+      this.inputControl.addValidators(Validators.max(this._data.max));
     }
   }
 }

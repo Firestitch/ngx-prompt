@@ -56,6 +56,8 @@ export interface IFsPromptInputConfig extends IFsPromptConfig {
   multiline?: boolean;
   suffix?: string;
   required?: boolean;
+  min?: number;
+  max?: number;
 }
 
 export interface IFsPromptButtonConfig {
