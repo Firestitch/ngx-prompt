@@ -16,6 +16,7 @@ import { IFsPromptInputConfig } from '../../interfaces';
 export class FsPromptInputComponent implements OnInit {
 
   public config: IFsPromptInputConfig;
+  public inputMode: 'text' | 'email' | 'numeric' | 'decimal' = 'text';
 
   public promptInputForm = new UntypedFormGroup({
     input: new UntypedFormControl(''),
@@ -53,22 +54,36 @@ export class FsPromptInputComponent implements OnInit {
 
     if (this._data.min != undefined) {
       this.inputControl.addValidators(Validators.min(this._data.min));
+
+      if (!this._data.numeric && !this._data.integer) {
+        this._data.numeric = true;
+      }
     }
 
     if (this._data.max != undefined) {
       this.inputControl.addValidators(Validators.max(this._data.max));
+
+      if (!this._data.numeric && !this._data.integer) {
+        this._data.numeric = true;
+      }
     }
 
-    if (this._data.numeric != undefined) {
+    if (this._data.numeric) {
       this.inputControl.addValidators(FsValidators.numeric);
+
+      this.inputMode = 'decimal';
     }
 
-    if (this._data.integer != undefined) {
+    if (this._data.integer) {
       this.inputControl.addValidators(FsValidators.integer);
+
+      this.inputMode = 'numeric';
     }
 
-    if (this._data.email != undefined) {
+    if (this._data.email) {
       this.inputControl.addValidators(FsValidators.email);
+
+      this.inputMode = 'email';
     }
   }
 }

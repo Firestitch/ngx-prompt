@@ -18,6 +18,8 @@
             <input
               matInput
               formControlName="input"
+              type="text"
+              [attr.inputmode]="inputMode"
               name="input">
           </ng-container>
           <div matSuffix *ngIf="config.suffix">
