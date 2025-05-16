@@ -58,6 +58,9 @@ export interface IFsPromptInputConfig extends IFsPromptConfig {
   required?: boolean;
   min?: number;
   max?: number;
+  numeric?: boolean;
+  integer?: boolean;
+  email?: boolean;
 }
 
 export interface IFsPromptButtonConfig {

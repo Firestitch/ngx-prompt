@@ -7,17 +7,17 @@
         <mat-form-field>
           <mat-label>{{config.label}}</mat-label>
           <ng-container *ngIf="config.multiline">
-            <textarea 
-              matInput 
-              cdkTextareaAutosize 
-              formControlName="input" 
+            <textarea
+              matInput
+              cdkTextareaAutosize
+              formControlName="input"
               name="input">
             </textarea>
           </ng-container>
           <ng-container *ngIf="!config.multiline">
-            <input 
-              matInput 
-              formControlName="input" 
+            <input
+              matInput
+              formControlName="input"
               name="input">
           </ng-container>
           <div matSuffix *ngIf="config.suffix">
@@ -34,6 +34,12 @@
                 Value should not be less than {{ inputControl.errors.min.min }}
               } @else if (inputControl.errors?.max) {
                 Value should not be greater than {{ inputControl.errors.max.max }}
+              } @else if (inputControl.errors?.numeric) {
+                Value should be numeric
+              } @else if (inputControl.errors?.integer) {
+                Value should be an integer
+              } @else if (inputControl.errors?.email) {
+                This is not a valid email address
               }
             </ng-template>
           </mat-hint>
@@ -42,7 +48,7 @@
     </mat-dialog-content>
 
     <mat-dialog-actions>
-      <button 
+      <button
           mat-button
           type="submit"
           *ngIf="config.commitShow"
