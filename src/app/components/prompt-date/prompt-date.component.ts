@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { UntypedFormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
@@ -39,14 +39,14 @@ import { MatButton } from '@angular/material/button';
     ],
 })
 export class FsPromptDateComponent implements OnInit {
+  data = inject(MAT_DIALOG_DATA);
+  private _dialogRef = inject<MatDialogRef<FsPromptDateComponent>>(MatDialogRef);
+
 
   public input = new UntypedFormControl('');
   public promptType;
 
-  constructor(
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private _dialogRef: MatDialogRef<FsPromptDateComponent>,
-  ) {
+  constructor() {
     this.promptType = this.data.promptType;
   }
 

@@ -1,6 +1,4 @@
-import {
-  Injectable,
-} from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
 import { MatDialog } from '@angular/material/dialog';
 
@@ -27,10 +25,8 @@ import { FsPromptDateComponent } from './../components/prompt-date/prompt-date.c
   providedIn: 'root',
 })
 export class FsPrompt {
+  private _dialog = inject(MatDialog);
 
-  constructor(
-    private _dialog: MatDialog,
-  ) { }
 
   /**
    * Open confirmation window and return close observable

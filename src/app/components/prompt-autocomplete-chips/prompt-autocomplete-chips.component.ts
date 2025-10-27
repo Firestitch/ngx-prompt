@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewChild, inject } from '@angular/core';
 import { UntypedFormControl, UntypedFormGroup, FormsModule } from '@angular/forms';
 
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
@@ -29,6 +29,9 @@ import { MatButton } from '@angular/material/button';
     ],
 })
 export class FsPromptAutocompleteChipsComponent {
+  private _dialogRef = inject<MatDialogRef<FsPromptAutocompleteChipsComponent>>(MatDialogRef);
+  config = inject<FsPromptAutocompleteChipsConfig<any>>(MAT_DIALOG_DATA);
+
   
   @ViewChild('autocomplete')
   public autocomplete: FsPromptAutocompleteChipsComponent;
@@ -39,10 +42,7 @@ export class FsPromptAutocompleteChipsComponent {
     input: new UntypedFormControl(''),
   });
 
-  constructor(
-    private _dialogRef: MatDialogRef<FsPromptAutocompleteChipsComponent>,
-    @Inject(MAT_DIALOG_DATA) public config: FsPromptAutocompleteChipsConfig<any>,
-  ) {    
+  constructor() {    
     this.model = this.config.default;
   }
 

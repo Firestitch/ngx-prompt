@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
 import { AbstractControl, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
@@ -40,6 +40,9 @@ import { MatButton } from '@angular/material/button';
     ],
 })
 export class FsPromptInputComponent implements OnInit {
+  private _data = inject(MAT_DIALOG_DATA);
+  private _dialogRef = inject<MatDialogRef<FsPromptInputComponent>>(MatDialogRef);
+
 
   public config: IFsPromptInputConfig;
   public inputMode: 'text' | 'email' | 'numeric' | 'decimal' = 'text';
@@ -47,11 +50,6 @@ export class FsPromptInputComponent implements OnInit {
   public promptInputForm = new UntypedFormGroup({
     input: new UntypedFormControl(''),
   });
-
-  constructor(
-    @Inject(MAT_DIALOG_DATA) private _data: any,
-    private _dialogRef: MatDialogRef<FsPromptInputComponent>,
-  ) {}
 
   public get inputControl(): AbstractControl {
     return this.promptInputForm.get('input');

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions } from '@angular/material/dialog';
@@ -25,14 +25,16 @@ import { NgClass } from '@angular/common';
     ],
 })
 export class FsPromptConfirmComponent {
+  private _dialogRef = inject<MatDialogRef<FsPromptConfirmComponent>>(MatDialogRef);
+  private _sanitizer = inject(DomSanitizer);
+  data = inject(MAT_DIALOG_DATA);
+
 
   public template;
 
-  constructor(
-    private _dialogRef: MatDialogRef<FsPromptConfirmComponent>,
-    private _sanitizer: DomSanitizer,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-  ) {
+  constructor() {
+    const data = this.data;
+
     this.template = this._sanitizer.bypassSecurityTrustHtml(data.template);
   }
 

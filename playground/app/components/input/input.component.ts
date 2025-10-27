@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { FsPrompt } from '@firestitch/prompt';
 import { MatButton } from '@angular/material/button';
@@ -13,10 +13,10 @@ import { FsFormModule } from '@firestitch/form';
     imports: [MatButton, FsFormModule],
 })
 export class InputComponent {
+  private _prompt = inject(FsPrompt);
+
 
   public inputValue: string | boolean = false;
-
-  constructor(private _prompt: FsPrompt) {}
 
   public openInput(multiline) {
     this._prompt.input({

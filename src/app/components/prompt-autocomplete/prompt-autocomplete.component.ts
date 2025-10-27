@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, inject } from '@angular/core';
 import { UntypedFormControl, FormsModule } from '@angular/forms';
 
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
@@ -37,6 +37,9 @@ import { MatButton } from '@angular/material/button';
     ],
 })
 export class FsPromptAutocompleteComponent implements OnDestroy {
+  dialogRef = inject<MatDialogRef<FsPromptAutocompleteComponent>>(MatDialogRef);
+  config = inject<FsPromptAutocompleteConfig<any>>(MAT_DIALOG_DATA);
+
 
   public inputControl = new UntypedFormControl('', []);
   public filteredItems: Observable<any[]>;
@@ -47,12 +50,6 @@ export class FsPromptAutocompleteComponent implements OnDestroy {
   public model;
 
   private _destroy$ = new Subject();
-
-  constructor(
-    public dialogRef: MatDialogRef<FsPromptAutocompleteComponent>,
-    @Inject(MAT_DIALOG_DATA) public config: FsPromptAutocompleteConfig<any>,
-  ) {
-  }
 
   public ngOnDestroy(): void {
     this._destroy$.next(null);

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { FsPrompt } from '@firestitch/prompt';
 
@@ -19,10 +19,10 @@ import { JsonPipe } from '@angular/common';
     ],
 })
 export class SelectComponent {
+  private _prompt = inject(FsPrompt);
+
 
   public selectValue = false;
-
-  constructor(private _prompt: FsPrompt) { }
 
   public openSelect() {
     const testObservable = new Subject<any>();

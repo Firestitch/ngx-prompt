@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { email } from '@firestitch/common';
 import { FsPrompt } from '@firestitch/prompt';
@@ -22,10 +22,10 @@ import { JsonPipe } from '@angular/common';
     ],
 })
 export class AutocompleteChipsComponent {
+  _prompt = inject(FsPrompt);
+
 
   public selected = false;
-
-  constructor(public _prompt: FsPrompt) {}
 
   public openAutocomplete() {
     this._prompt.autocompleteChips({

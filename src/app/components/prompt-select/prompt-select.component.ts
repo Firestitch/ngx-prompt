@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  Inject,
-  OnInit,
-} from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, inject } from '@angular/core';
 
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 
@@ -46,19 +40,16 @@ import { MatButton } from '@angular/material/button';
     ],
 })
 export class FsPromptSelectComponent implements OnInit {
+  dialogRef = inject<MatDialogRef<FsPromptSelectComponent>>(MatDialogRef);
+  data = inject(MAT_DIALOG_DATA);
+  private _cdRef = inject(ChangeDetectorRef);
+
 
   public result;
   public loading = false;
   public items = [];
   public error = false;
   public config: IFsPromptSelectConfig = {};
-
-  constructor(
-    public dialogRef: MatDialogRef<FsPromptSelectComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    private _cdRef: ChangeDetectorRef,
-  ) {
-  }
 
   public ngOnInit() {
     this.config = {
