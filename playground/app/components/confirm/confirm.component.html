@@ -4,9 +4,11 @@
   <button mat-raised-button color="primary" (click)="showConfirmButtons()">Open Confirm with Custom Buttons</button>
 </div>
 
-<div *ngIf="confirmValue">
-  <fieldset>
-    <legend>Selected</legend>
-    <ng-container>{{confirmValue}}</ng-container>
-  </fieldset>
-</div>
+@if (confirmValue) {
+  <div>
+    <fieldset>
+      <legend>Selected</legend>
+      <ng-container>{{confirmValue}}</ng-container>
+    </fieldset>
+  </div>
+}

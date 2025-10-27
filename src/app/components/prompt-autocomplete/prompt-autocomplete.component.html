@@ -1,6 +1,6 @@
 <form
-    fsForm
-    [submit]="select">
+  fsForm
+  [submit]="select">
   <fs-dialog mobileMode="float">
     <h2 mat-dialog-title>
       {{ config.title }}
@@ -9,40 +9,40 @@
       <div class="fs-column">
         {{ config.template }}
         <fs-autocomplete
-            [fetch]="fetch"
-            [fetchOnFocus]="config.fetchOnFocus"
-            [displayWith]="displayWith"
-            [(ngModel)]="result"
-            [placeholder]="config.label"
-            (ngModelChange)="change()"
-            [required]="config.required"
-            name="result">
+          [fetch]="fetch"
+          [fetchOnFocus]="config.fetchOnFocus"
+          [displayWith]="displayWith"
+          [(ngModel)]="result"
+          [placeholder]="config.label"
+          (ngModelChange)="change()"
+          [required]="config.required"
+          name="result">
           <ng-template
-              fsAutocompleteTemplate
-              let-data="data">
+            fsAutocompleteTemplate
+            let-data="data">
             {{ data.name }}
           </ng-template>
         </fs-autocomplete>
       </div>
     </mat-dialog-content>
     <mat-dialog-actions>
-      <ng-container *ngIf="!config.commitOnSelect">
+      @if (!config.commitOnSelect) {
         <button
-            mat-button
-            color="primary"
-            type="submit">
+          mat-button
+          color="primary"
+          type="submit">
           Continue
         </button>
-      </ng-container>
-      <ng-container *ngIf="config.cancelShow">
+      }
+      @if (config.cancelShow) {
         <button
-            mat-button
-            [color]="config.commitOnSelect ? 'primary' : ''"
-            [mat-dialog-close]="undefined"
-            type="button">
+          mat-button
+          [color]="config.commitOnSelect ? 'primary' : ''"
+          [mat-dialog-close]="undefined"
+          type="button">
           {{ config.cancelLabel }}
         </button>
-      </ng-container>
+      }
     </mat-dialog-actions>
   </fs-dialog>
 </form>

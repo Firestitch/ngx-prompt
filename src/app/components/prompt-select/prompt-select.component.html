@@ -4,37 +4,43 @@
     <mat-dialog-content tabindex="-1">
       <div class="fs-column">
         {{data.template}}
-        <mat-form-field *ngIf="!error">
-          <mat-label>{{data.label}}</mat-label>
-          <mat-select
+        @if (!error) {
+          <mat-form-field>
+            <mat-label>{{data.label}}</mat-label>
+            <mat-select
               [required]="true"
-              [(ngModel)]="result" 
+              [(ngModel)]="result"
               (ngModelChange)="change()"
               name="select">
-            <mat-option *ngFor="let item of items" [value]="item.value">
-              {{ item.name }}
-            </mat-option>
-          </mat-select>
-          <mat-hint>{{data.hint}}</mat-hint>
-        </mat-form-field>
-        <ng-container *ngIf="error">Something went wrong. Please, try again</ng-container>
+              @for (item of items; track item) {
+                <mat-option [value]="item.value">
+                  {{ item.name }}
+                </mat-option>
+              }
+            </mat-select>
+            <mat-hint>{{data.hint}}</mat-hint>
+          </mat-form-field>
+        }
+        @if (error) {
+          Something went wrong. Please, try again
+        }
       </div>
     </mat-dialog-content>
 
     <mat-dialog-actions>
-      <ng-container *ngIf="!config.commitOnSelect">
+      @if (!config.commitOnSelect) {
         <button
-            type="submit"
-            mat-button
-            color="primary">
+          type="submit"
+          mat-button
+          color="primary">
           Continue
-        </button>    
-      </ng-container>
-      <button 
-          mat-button 
-          [color]="config.commitOnSelect ? 'primary' : ''"
-          [mat-dialog-close]="undefined" 
-          type="button">
+        </button>
+      }
+      <button
+        mat-button
+        [color]="config.commitOnSelect ? 'primary' : ''"
+        [mat-dialog-close]="undefined"
+        type="button">
         {{data.cancelLabel}}
       </button>
     </mat-dialog-actions>

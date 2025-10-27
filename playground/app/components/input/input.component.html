@@ -3,9 +3,11 @@
   <button mat-raised-button color="primary" (click)="openInput(true)">Open Multiline Input</button>
 </div>
 
-<div *ngIf="inputValue !== false">
-  <fieldset>
-    <legend>Selected</legend>
-    <ng-container>{{inputValue}}</ng-container>
-  </fieldset>
-</div>
+@if (inputValue !== false) {
+  <div>
+    <fieldset>
+      <legend>Selected</legend>
+      <ng-container>{{inputValue}}</ng-container>
+    </fieldset>
+  </div>
+}

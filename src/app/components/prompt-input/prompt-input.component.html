@@ -1,35 +1,38 @@
 <fs-dialog mobileMode="float">
   <form [formGroup]="promptInputForm">
-    <h1 mat-dialog-title *ngIf="config.title">{{config.title}}</h1>
+    @if (config.title) {
+      <h1 mat-dialog-title>{{config.title}}</h1>
+    }
     <mat-dialog-content tabindex="-1">
       <div class="fs-column">
         {{config.template}}
         <mat-form-field>
           <mat-label>{{config.label}}</mat-label>
-          <ng-container *ngIf="config.multiline">
+          @if (config.multiline) {
             <textarea
               matInput
               cdkTextareaAutosize
               formControlName="input"
               name="input">
             </textarea>
-          </ng-container>
-          <ng-container *ngIf="!config.multiline">
+          }
+          @if (!config.multiline) {
             <input
               matInput
               formControlName="input"
               type="text"
               [attr.inputmode]="inputMode"
               name="input">
-          </ng-container>
-          <div matSuffix *ngIf="config.suffix">
-            {{config.suffix}}
-          </div>
+          }
+          @if (config.suffix) {
+            <div matSuffix>
+              {{config.suffix}}
+            </div>
+          }
           <mat-hint [ngClass]="{ 'form-error': inputControl.invalid && inputControl.dirty }">
-            <ng-container *ngIf="inputControl.valid || !inputControl.dirty; else invalidMessage">
+            @if (inputControl.valid || !inputControl.dirty) {
               {{config.hint}}
-            </ng-container>
-            <ng-template #invalidMessage>
+            } @else {
               @if (inputControl.errors?.required) {
                 This field is required
               } @else if (inputControl.errors?.min) {
@@ -43,23 +46,26 @@
               } @else if (inputControl.errors?.email) {
                 This is not a valid email address
               }
-            </ng-template>
+            }
           </mat-hint>
         </mat-form-field>
       </div>
     </mat-dialog-content>
 
     <mat-dialog-actions>
-      <button
+      @if (config.commitShow) {
+        <button
           mat-button
           type="submit"
-          *ngIf="config.commitShow"
           (click)="complete()"
           [disabled]="inputControl.invalid"
           color="primary">
-        {{config.commitLabel}}
-      </button>
-      <button mat-button [mat-dialog-close]="undefined" type="button" *ngIf="config.cancelShow">{{config.cancelLabel}}</button>
+          {{config.commitLabel}}
+        </button>
+      }
+      @if (config.cancelShow) {
+        <button mat-button [mat-dialog-close]="undefined" type="button">{{config.cancelLabel}}</button>
+      }
     </mat-dialog-actions>
   </form>
 </fs-dialog>

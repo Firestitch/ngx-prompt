@@ -6,20 +6,20 @@
     <div class="fs-column">
       {{ config.template }}
       <fs-autocomplete-chips
-          #autocomplete
-          [fetch]="fetch"
-          [placeholder]="config.label"
-          [fetchOnFocus]="true"
-          [(ngModel)]="model"
-          [allowText]="config.allowText"
-          [allowObject]="!config.allowText"
-          [validateText]="validateText"
-          [required]="config.required"
-          [multiple]="true"
-          name="model">
+        #autocomplete
+        [fetch]="fetch"
+        [placeholder]="config.label"
+        [fetchOnFocus]="true"
+        [(ngModel)]="model"
+        [allowText]="config.allowText"
+        [allowObject]="!config.allowText"
+        [validateText]="validateText"
+        [required]="config.required"
+        [multiple]="true"
+        name="model">
         <ng-template
-            fsAutocompleteChipsTemplate
-            let-object="object">
+          fsAutocompleteChipsTemplate
+          let-object="object">
           {{ object.name }}
         </ng-template>
       </fs-autocomplete-chips>
@@ -27,19 +27,21 @@
   </mat-dialog-content>
   <mat-dialog-actions>
     <button
-        mat-button
-        type="submit"
-        [disabled]="config.required && !model.length"
-        (click)="complete()"
-        color="primary">
+      mat-button
+      type="submit"
+      [disabled]="config.required && !model.length"
+      (click)="complete()"
+      color="primary">
       {{ config.commitLabel }}
     </button>
-    <button
+    @if (config.cancelShow) {
+      <button
         mat-button
         [mat-dialog-close]="undefined"
         type="button"
-        *ngIf="config.cancelShow">
-      {{ config.cancelLabel }}
-    </button>
+        >
+        {{ config.cancelLabel }}
+      </button>
+    }
   </mat-dialog-actions>
 </fs-dialog>
