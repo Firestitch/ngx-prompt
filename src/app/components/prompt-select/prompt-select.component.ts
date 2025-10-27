@@ -6,19 +6,44 @@ import {
   OnInit,
 } from '@angular/core';
 
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 
 import { of } from 'rxjs';
 
 import { ConverterType } from '../../helpers/enums';
 import { valuesConverter } from '../../helpers/values-converter';
 import { IFsPromptSelectConfig } from '../../interfaces';
+import { FormsModule } from '@angular/forms';
+import { FsFormModule } from '@firestitch/form';
+import { FsDialogModule } from '@firestitch/dialog';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatLabel, MatHint } from '@angular/material/form-field';
+import { MatSelect } from '@angular/material/select';
+import { MatOption } from '@angular/material/core';
+import { MatButton } from '@angular/material/button';
 
 
 @Component({
-  templateUrl: './prompt-select.component.html',
-  styleUrls: ['../../prompt.css', './prompt-select.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './prompt-select.component.html',
+    styleUrls: ['../../prompt.css', './prompt-select.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        FormsModule,
+        FsFormModule,
+        FsDialogModule,
+        MatDialogTitle,
+        CdkScrollable,
+        MatDialogContent,
+        MatFormField,
+        MatLabel,
+        MatSelect,
+        MatOption,
+        MatHint,
+        MatDialogActions,
+        MatButton,
+        MatDialogClose,
+    ],
 })
 export class FsPromptSelectComponent implements OnInit {
 

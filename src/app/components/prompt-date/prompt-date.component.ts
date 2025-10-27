@@ -1,19 +1,42 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import { UntypedFormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
+import { FsDialogModule } from '@firestitch/dialog';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatLabel, MatHint } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { FsDatePickerModule } from '@firestitch/datepicker';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  templateUrl: './prompt-date.component.html',
-  styleUrls: ['../../prompt.css'],
-  styles: [
-    `
+    templateUrl: './prompt-date.component.html',
+    styleUrls: ['../../prompt.css'],
+    styles: [
+        `
       .form-error {
         color: #f44336;
       }
     `,
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        FsDialogModule,
+        MatDialogTitle,
+        CdkScrollable,
+        MatDialogContent,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        FormsModule,
+        FsDatePickerModule,
+        ReactiveFormsModule,
+        MatHint,
+        MatDialogActions,
+        MatButton,
+        MatDialogClose,
+    ],
 })
 export class FsPromptDateComponent implements OnInit {
 

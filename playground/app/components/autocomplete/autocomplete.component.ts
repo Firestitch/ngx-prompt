@@ -3,12 +3,21 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FsPrompt } from '@firestitch/prompt';
 
 import { of } from 'rxjs';
+import { MatButton } from '@angular/material/button';
+import { FsFormModule } from '@firestitch/form';
+import { JsonPipe } from '@angular/common';
 
 @Component({
-  selector: 'autocomplete-example',
-  styleUrls: ['./autocomplete.component.scss'],
-  templateUrl: './autocomplete.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'autocomplete-example',
+    styleUrls: ['./autocomplete.component.scss'],
+    templateUrl: './autocomplete.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        MatButton,
+        FsFormModule,
+        JsonPipe,
+    ],
 })
 export class AutocompleteComponent {
 

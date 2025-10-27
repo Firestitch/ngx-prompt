@@ -1,17 +1,43 @@
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
-import { AbstractControl, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 
 import { FsValidators } from '@firestitch/form';
 
 import { IFsPromptInputConfig } from '../../interfaces';
+import { FsDialogModule } from '@firestitch/dialog';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { MatFormField, MatLabel, MatSuffix, MatHint } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { NgClass } from '@angular/common';
+import { MatButton } from '@angular/material/button';
 
 
 @Component({
-  templateUrl: './prompt-input.component.html',
-  styleUrls: ['../../prompt.css', './prompt-input.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    templateUrl: './prompt-input.component.html',
+    styleUrls: ['../../prompt.css', './prompt-input.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        FsDialogModule,
+        FormsModule,
+        ReactiveFormsModule,
+        MatDialogTitle,
+        CdkScrollable,
+        MatDialogContent,
+        MatFormField,
+        MatLabel,
+        MatInput,
+        CdkTextareaAutosize,
+        MatSuffix,
+        MatHint,
+        NgClass,
+        MatDialogActions,
+        MatButton,
+        MatDialogClose,
+    ],
 })
 export class FsPromptInputComponent implements OnInit {
 

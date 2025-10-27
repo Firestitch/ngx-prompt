@@ -1,12 +1,16 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { FsPrompt } from '@firestitch/prompt';
+import { MatButton } from '@angular/material/button';
+import { FsFormModule } from '@firestitch/form';
 
 
 @Component({
-  selector: 'date-time-example',
-  templateUrl: './date-time.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'date-time-example',
+    templateUrl: './date-time.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [MatButton, FsFormModule],
 })
 export class DateTimeComponent {
 

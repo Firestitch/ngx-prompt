@@ -3,11 +3,20 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FsPrompt } from '@firestitch/prompt';
 
 import { Subject } from 'rxjs';
+import { MatButton } from '@angular/material/button';
+import { FsFormModule } from '@firestitch/form';
+import { JsonPipe } from '@angular/common';
 
 @Component({
-  selector: 'select-example',
-  templateUrl: './select.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'select-example',
+    templateUrl: './select.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        MatButton,
+        FsFormModule,
+        JsonPipe,
+    ],
 })
 export class SelectComponent {
 

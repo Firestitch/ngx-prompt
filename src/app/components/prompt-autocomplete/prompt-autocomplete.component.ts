@@ -1,22 +1,40 @@
 import { ChangeDetectionStrategy, Component, Inject, OnDestroy } from '@angular/core';
-import { UntypedFormControl } from '@angular/forms';
+import { UntypedFormControl, FormsModule } from '@angular/forms';
 
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 
 import { Observable, of, Subject } from 'rxjs';
 import { takeUntil, tap } from 'rxjs/operators';
 
 import { FsPromptAutocompleteConfig } from '../../classes';
+import { FsFormModule } from '@firestitch/form';
+import { FsDialogModule } from '@firestitch/dialog';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { FsAutocompleteModule } from '@firestitch/autocomplete';
+import { MatButton } from '@angular/material/button';
 
 
 @Component({
-  selector: 'fs-prompt-autocomplete',
-  templateUrl: './prompt-autocomplete.component.html',
-  styleUrls: [
-    '../../prompt.css',
-    './prompt-autocomplete.component.scss',
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'fs-prompt-autocomplete',
+    templateUrl: './prompt-autocomplete.component.html',
+    styleUrls: [
+        '../../prompt.css',
+        './prompt-autocomplete.component.scss',
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        FormsModule,
+        FsFormModule,
+        FsDialogModule,
+        MatDialogTitle,
+        CdkScrollable,
+        MatDialogContent,
+        FsAutocompleteModule,
+        MatDialogActions,
+        MatButton,
+        MatDialogClose,
+    ],
 })
 export class FsPromptAutocompleteComponent implements OnDestroy {
 
