@@ -1,14 +1,26 @@
-
 <div class="fs-row.gap-xs.wrap">
-  <button mat-raised-button color="primary" (click)="openAutocomplete()">Open Autocomplete Chips</button>
-  <button mat-raised-button color="primary" (click)="openAutocompleteEmail()">Open Autocomplete Chips Email</button>
+  <button
+      mat-flat-button
+      color="primary"
+      (click)="openAutocomplete()">
+    Open Autocomplete Chips
+  </button>
+  <button
+      mat-flat-button
+      color="primary"
+      (click)="openAutocompleteEmail()">
+    Open Autocomplete Chips Email
+  </button>
 </div>
-
 @if (selected) {
   <div>
     <fieldset>
-      <legend>Selected</legend>
-      <ng-container>{{selected|json}}</ng-container>
+      <legend>
+        Selected
+      </legend>
+      <ng-container>
+        {{ selected|json }}
+      </ng-container>
     </fieldset>
   </div>
 }

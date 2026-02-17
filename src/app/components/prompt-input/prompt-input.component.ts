@@ -1,113 +1,130 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
-import { AbstractControl, UntypedFormControl, UntypedFormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgClass } from '@angular/common';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit, ViewChild, inject } from '@angular/core';
+import { AbstractControl, FormsModule, NgModel, Validators } from '@angular/forms';
 
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
+import { CdkScrollable } from '@angular/cdk/scrolling';
+import { CdkTextareaAutosize } from '@angular/cdk/text-field';
+import { MatButton } from '@angular/material/button';
+import { MAT_DIALOG_DATA, MatDialogActions, MatDialogClose, MatDialogContent, MatDialogRef, MatDialogTitle } from '@angular/material/dialog';
+import { MatFormField, MatHint, MatLabel, MatSuffix } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
 
-import { FsValidators } from '@firestitch/form';
+import { FsDialogModule } from '@firestitch/dialog';
+import { FsFormModule, FsValidators } from '@firestitch/form';
+
+import { of } from 'rxjs';
 
 import { IFsPromptInputConfig } from '../../interfaces';
-import { FsDialogModule } from '@firestitch/dialog';
-import { CdkScrollable } from '@angular/cdk/scrolling';
-import { MatFormField, MatLabel, MatSuffix, MatHint } from '@angular/material/form-field';
-import { MatInput } from '@angular/material/input';
-import { CdkTextareaAutosize } from '@angular/cdk/text-field';
-import { NgClass } from '@angular/common';
-import { MatButton } from '@angular/material/button';
 
 
 @Component({
-    templateUrl: './prompt-input.component.html',
-    styleUrls: ['../../prompt.css', './prompt-input.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
-    imports: [
-        FsDialogModule,
-        FormsModule,
-        ReactiveFormsModule,
-        MatDialogTitle,
-        CdkScrollable,
-        MatDialogContent,
-        MatFormField,
-        MatLabel,
-        MatInput,
-        CdkTextareaAutosize,
-        MatSuffix,
-        MatHint,
-        NgClass,
-        MatDialogActions,
-        MatButton,
-        MatDialogClose,
-    ],
+  templateUrl: './prompt-input.component.html',
+  styleUrls: ['../../prompt.css', './prompt-input.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    FsDialogModule,
+    FsFormModule,
+    FormsModule,
+    MatDialogTitle,
+    CdkScrollable,
+    MatDialogContent,
+    MatFormField,
+    MatLabel,
+    MatInput,
+    CdkTextareaAutosize,
+    MatSuffix,
+    MatHint,
+    NgClass,
+    MatDialogActions,
+    MatButton,
+    MatDialogClose,
+  ],
 })
 export class FsPromptInputComponent implements OnInit {
-  private _data = inject(MAT_DIALOG_DATA);
-  private _dialogRef = inject<MatDialogRef<FsPromptInputComponent>>(MatDialogRef);
-
 
   public config: IFsPromptInputConfig;
   public inputMode: 'text' | 'email' | 'numeric' | 'decimal' = 'text';
+  public inputValue: any = '';
 
-  public promptInputForm = new UntypedFormGroup({
-    input: new UntypedFormControl(''),
-  });
+  private _data = inject(MAT_DIALOG_DATA);
+  private _dialogRef = inject<MatDialogRef<FsPromptInputComponent>>(MatDialogRef);
+  private _cdRef = inject(ChangeDetectorRef);
+  private _inputModel: NgModel;
+  private _validatorsApplied = false;
 
-  public get inputControl(): AbstractControl {
-    return this.promptInputForm.get('input');
+  @ViewChild(NgModel) public set inputModelRef(model: NgModel) {
+    if (model && !this._validatorsApplied) {
+      this._inputModel = model;
+      this._applyCustomValidators(model.control);
+      this._validatorsApplied = true;
+      this._cdRef.markForCheck();
+    }
+  }
+
+  public get inputControl(): AbstractControl | null {
+    return this._inputModel?.control;
   }
 
   public ngOnInit(): void {
     this.config = this._data;
-    this._init();
+    this.inputValue = this._data.default;
+    this._initInputMode();
   }
 
-  public complete() {
-    if (this.inputControl.valid) {
-      this._dialogRef.close(this.inputControl.value);
-    }
-  }
+  public submit = () => {
+    this._dialogRef.close(this.inputValue);
 
-  private _init() {
-    this.inputControl.setValue(this._data.default);
-    this._applyValidators();
-  }
+    return of(true);
+  };
 
-  private _applyValidators(): void {
-    if (this._data.required) {
-      this.inputControl.addValidators(Validators.required);
-    }
-
-    if (this._data.min != undefined) {
-      this.inputControl.addValidators(Validators.min(this._data.min));
-
+  private _initInputMode(): void {
+    if (this._data.min !== undefined) {
       if (!this._data.numeric && !this._data.integer) {
         this._data.numeric = true;
       }
     }
 
-    if (this._data.max != undefined) {
-      this.inputControl.addValidators(Validators.max(this._data.max));
-
+    if (this._data.max !== undefined) {
       if (!this._data.numeric && !this._data.integer) {
         this._data.numeric = true;
       }
     }
 
     if (this._data.numeric) {
-      this.inputControl.addValidators(FsValidators.numeric);
-
       this.inputMode = 'decimal';
     }
 
     if (this._data.integer) {
-      this.inputControl.addValidators(FsValidators.integer);
-
       this.inputMode = 'numeric';
     }
 
     if (this._data.email) {
-      this.inputControl.addValidators(FsValidators.email);
-
       this.inputMode = 'email';
     }
+  }
+
+  private _applyCustomValidators(control: AbstractControl): void {
+    if (this._data.min !== undefined) {
+      control.addValidators(Validators.min(this._data.min));
+    }
+
+    if (this._data.max !== undefined) {
+      control.addValidators(Validators.max(this._data.max));
+    }
+
+    if (this._data.numeric) {
+      control.addValidators(FsValidators.numeric);
+    }
+
+    if (this._data.integer) {
+      control.addValidators(FsValidators.integer);
+    }
+
+    if (this._data.email) {
+      control.addValidators(FsValidators.email);
+    }
+
+    control.updateValueAndValidity();
   }
 }

@@ -1,13 +1,16 @@
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core';
-import { UntypedFormControl, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogTitle, MatDialogContent, MatDialogActions, MatDialogClose } from '@angular/material/dialog';
 import { FsDialogModule } from '@firestitch/dialog';
+import { FsFormModule } from '@firestitch/form';
 import { CdkScrollable } from '@angular/cdk/scrolling';
 import { MatFormField, MatLabel, MatHint } from '@angular/material/form-field';
 import { MatInput } from '@angular/material/input';
 import { FsDatePickerModule } from '@firestitch/datepicker';
 import { MatButton } from '@angular/material/button';
+
+import { of } from 'rxjs';
 
 @Component({
     templateUrl: './prompt-date.component.html',
@@ -23,6 +26,7 @@ import { MatButton } from '@angular/material/button';
     standalone: true,
     imports: [
         FsDialogModule,
+        FsFormModule,
         MatDialogTitle,
         CdkScrollable,
         MatDialogContent,
@@ -31,7 +35,6 @@ import { MatButton } from '@angular/material/button';
         MatInput,
         FormsModule,
         FsDatePickerModule,
-        ReactiveFormsModule,
         MatHint,
         MatDialogActions,
         MatButton,
@@ -42,8 +45,7 @@ export class FsPromptDateComponent implements OnInit {
   data = inject(MAT_DIALOG_DATA);
   private _dialogRef = inject<MatDialogRef<FsPromptDateComponent>>(MatDialogRef);
 
-
-  public input = new UntypedFormControl('');
+  public inputValue: any = '';
   public promptType;
 
   constructor() {
@@ -51,20 +53,12 @@ export class FsPromptDateComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this._init();
+    this.inputValue = this.data.default;
   }
 
-  public complete() {
-    if (this.input.valid) {
-      this._dialogRef.close(this.input.value);
-    }
-  }
+  public submit = () => {
+    this._dialogRef.close(this.inputValue);
 
-  private _init() {
-    this.input.setValue(this.data.default);
-
-    if (this.data.required) {
-      this.input.setValidators(Validators.required);
-    }
-  }
+    return of(true);
+  };
 }

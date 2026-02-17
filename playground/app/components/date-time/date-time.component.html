@@ -1,10 +1,18 @@
-<button mat-raised-button color="primary" (click)="openInput()">Open Date Time</button>
-
+<button
+    mat-flat-button
+    color="primary"
+    (click)="openInput()">
+  Open Date Time
+</button>
 @if (inputValue !== false) {
   <div>
     <fieldset>
-      <legend>Selected</legend>
-      <ng-container>{{inputValue}}</ng-container>
+      <legend>
+        Selected
+      </legend>
+      <ng-container>
+        {{ inputValue }}
+      </ng-container>
     </fieldset>
   </div>
 }

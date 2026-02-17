@@ -1,5 +1,5 @@
-<fs-dialog mobileMode="float">
-  <form [formGroup]="promptInputForm">
+<form fsForm [submit]="submit">
+  <fs-dialog mobileMode="float">
     @if (config.title) {
       <h1 mat-dialog-title>{{config.title}}</h1>
     }
@@ -12,14 +12,16 @@
             <textarea
               matInput
               cdkTextareaAutosize
-              formControlName="input"
+              [(ngModel)]="inputValue"
+              [required]="config.required"
               name="input">
             </textarea>
           }
           @if (!config.multiline) {
             <input
               matInput
-              formControlName="input"
+              [(ngModel)]="inputValue"
+              [required]="config.required"
               type="text"
               [attr.inputmode]="inputMode"
               name="input">
@@ -29,8 +31,8 @@
               {{config.suffix}}
             </div>
           }
-          <mat-hint [ngClass]="{ 'form-error': inputControl.invalid && inputControl.dirty }">
-            @if (inputControl.valid || !inputControl.dirty) {
+          <mat-hint [ngClass]="{ 'form-error': inputControl?.invalid && inputControl?.dirty }">
+            @if (!inputControl || inputControl.valid || !inputControl.dirty) {
               {{config.hint}}
             } @else {
               @if (inputControl.errors?.required) {
@@ -57,8 +59,6 @@
         <button
           mat-button
           type="submit"
-          (click)="complete()"
-          [disabled]="inputControl.invalid"
           color="primary">
           {{config.commitLabel}}
         </button>
@@ -67,5 +67,5 @@
         <button mat-button [mat-dialog-close]="undefined" type="button">{{config.cancelLabel}}</button>
       }
     </mat-dialog-actions>
-  </form>
-</fs-dialog>
+  </fs-dialog>
+</form>

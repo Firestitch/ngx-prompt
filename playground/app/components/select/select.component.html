@@ -1,10 +1,18 @@
-<button mat-raised-button color="primary" (click)="openSelect()">Open Select</button>
-
+<button
+    mat-flat-button
+    color="primary"
+    (click)="openSelect()">
+  Open Select
+</button>
 @if (selectValue) {
   <div>
     <fieldset>
-      <legend>Selected</legend>
-      <ng-container>{{selectValue|json}}</ng-container>
+      <legend>
+        Selected
+      </legend>
+      <ng-container>
+        {{ selectValue|json }}
+      </ng-container>
     </fieldset>
   </div>
 }

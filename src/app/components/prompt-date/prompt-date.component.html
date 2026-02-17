@@ -1,43 +1,46 @@
-<fs-dialog mobileMode="float">
-  @if (data.title) {
-    <h1 mat-dialog-title>{{data.title}}</h1>
-  }
-  <mat-dialog-content tabindex="-1">
-    <div class="fs-column">
-      {{data.template}}
-      <mat-form-field>
-        <mat-label>{{data.label}}</mat-label>
-        <input
-          matInput
-          fsDatePicker
-          [formControl]="input"
-          name="input"
-          [view]="promptType">
-        <mat-hint>
-          @if (input.valid || !input.dirty) {
-            {{data.hint}}
-          } @else {
-            <div class="form-error">
-              This field is required
-            </div>
-          }
-
-        </mat-hint>
-      </mat-form-field>
-    </div>
-  </mat-dialog-content>
-
-  <mat-dialog-actions>
-    @if (data.commitShow) {
-      <button mat-button
-        (click)="complete()"
-        [disabled]="input.invalid"
-        color="primary">
-        {{data.commitLabel}}
-      </button>
+<form fsForm [submit]="submit">
+  <fs-dialog mobileMode="float">
+    @if (data.title) {
+      <h1 mat-dialog-title>{{data.title}}</h1>
     }
-    @if (data.cancelShow) {
-      <button mat-button [mat-dialog-close]="undefined" type="button">{{data.cancelLabel}}</button>
-    }
-  </mat-dialog-actions>
-</fs-dialog>
+    <mat-dialog-content tabindex="-1">
+      <div class="fs-column">
+        {{data.template}}
+        <mat-form-field>
+          <mat-label>{{data.label}}</mat-label>
+          <input
+            matInput
+            fsDatePicker
+            [(ngModel)]="inputValue"
+            [required]="data.required"
+            #inputModel="ngModel"
+            name="input"
+            [view]="promptType">
+          <mat-hint>
+            @if (inputModel.valid || !inputModel.dirty) {
+              {{data.hint}}
+            } @else {
+              <div class="form-error">
+                This field is required
+              </div>
+            }
+
+          </mat-hint>
+        </mat-form-field>
+      </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions>
+      @if (data.commitShow) {
+        <button mat-button
+          type="submit"
+          color="primary">
+          {{data.commitLabel}}
+        </button>
+      }
+      @if (data.cancelShow) {
+        <button mat-button [mat-dialog-close]="undefined" type="button">{{data.cancelLabel}}</button>
+      }
+    </mat-dialog-actions>
+  </fs-dialog>
+</form>

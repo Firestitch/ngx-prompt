@@ -1,14 +1,26 @@
-
 <div class="fs-row.gap-xs.wrap">
-  <button mat-raised-button color="primary" (click)="showConfirm()">Open Confirm</button>
-  <button mat-raised-button color="primary" (click)="showConfirmButtons()">Open Confirm with Custom Buttons</button>
+  <button
+      mat-flat-button
+      color="primary"
+      (click)="showConfirm()">
+    Open Confirm
+  </button>
+  <button
+      mat-flat-button
+      color="primary"
+      (click)="showConfirmButtons()">
+    Open Confirm with Custom Buttons
+  </button>
 </div>
-
 @if (confirmValue) {
   <div>
     <fieldset>
-      <legend>Selected</legend>
-      <ng-container>{{confirmValue}}</ng-container>
+      <legend>
+        Selected
+      </legend>
+      <ng-container>
+        {{ confirmValue }}
+      </ng-container>
     </fieldset>
   </div>
 }
