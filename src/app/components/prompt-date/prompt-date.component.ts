@@ -14,14 +14,7 @@ import { of } from 'rxjs';
 
 @Component({
     templateUrl: './prompt-date.component.html',
-    styleUrls: ['../../prompt.css'],
-    styles: [
-        `
-      .form-error {
-        color: #f44336;
-      }
-    `,
-    ],
+    styleUrls: ['../../prompt.css', './prompt-date.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     standalone: true,
     imports: [

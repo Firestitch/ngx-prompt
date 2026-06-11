@@ -1,7 +1,7 @@
 {
   "name": "@firestitch/prompt",
   "title": "Prompt",
-  "version": "18.0.13",
+  "version": "18.0.14",
   "repository": {
     "type": "git",
     "url": "https://github.com/Firestitch/ngx-prompt"
@@ -51,7 +51,7 @@
     "@firestitch/component-tools": "^18.0.13",
     "@firestitch/core": "^18.0.1",
     "@firestitch/date": "^18.0.1",
-    "@firestitch/datepicker": "^18.0.2",
+    "@firestitch/datepicker": "^18.0.21",
     "@firestitch/dialog": "^18.0.6",
     "@firestitch/drawer": "^18.0.0",
     "@firestitch/example": "^18.0.5",
